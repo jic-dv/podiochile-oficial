@@ -298,6 +298,18 @@ las dos rutas.
 > refresca sola con el tiempo, o al instante pasando la URL por
 > developers.facebook.com/tools/debug y pidiendo "Scrape Again".
 
+**Todo `<a>`/`<Link>` lleva `title`.** Ninguno lo traía salvo un puñado
+sueltos: el drawer móvil incluso ponía `title={href}`, mostrando la URL en vez
+de la etiqueta. Ahora los ~20 componentes con enlaces pasan un `title`
+descriptivo — el texto visible cuando lo hay (los CTA que envuelven un
+`Button`, donde el texto queda dentro y no es el nombre accesible del enlace),
+o algo compuesto cuando el enlace es ambiguo por repetirse: las tarjetas de
+servicio y "Ver detalle" usan `"${verDetalle} - ${servicio.titulo}"` porque
+tres enlaces idénticos con el mismo texto ("Ver detalle y planes") son un
+problema real de accesibilidad (WCAG 2.4.4), no solo de SEO. Verificado con un
+barrido del árbol: cero etiquetas `<a>/<Link>/<ButtonLink>` con `href` y sin
+`title` en todo `src/`.
+
 **No se venden solo páginas, también aplicaciones web.** El CRM es una
 aplicación, no un sitio, y la metadata decía únicamente "Páginas Web": título,
 descripción, palabras clave, imagen social, manifiesto, JSON-LD y el subtítulo

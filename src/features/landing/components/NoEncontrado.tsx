@@ -39,15 +39,15 @@ export default function NoEncontrado({ servicios }: { servicios: Servicio[] }) {
 
           <Reveal delay={180}>
             <div className="mt-9 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
-              <ButtonLink href="/" size="lg">
+              <ButtonLink href="/" title={t.noEncontrado.inicio} size="lg">
                 <IconInicio className="h-[1.15rem] w-[1.15rem]" aria-hidden="true" />
                 {t.noEncontrado.inicio}
               </ButtonLink>
-              <ButtonLink href="/#servicios" variant="outline" size="lg">
+              <ButtonLink href="/#servicios" title={t.noEncontrado.verServicios} variant="outline" size="lg">
                 <IconServicios className="h-[1.15rem] w-[1.15rem]" aria-hidden="true" />
                 {t.noEncontrado.verServicios}
               </ButtonLink>
-              <ButtonLink href="/#contacto" variant="ghost" size="lg">
+              <ButtonLink href="/#contacto" title={t.noEncontrado.contacto} variant="ghost" size="lg">
                 <IconContacto className="h-[1.15rem] w-[1.15rem]" aria-hidden="true" />
                 {t.noEncontrado.contacto}
               </ButtonLink>

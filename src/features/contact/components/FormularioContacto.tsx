@@ -142,6 +142,7 @@ export default function FormularioContacto({ servicios }: { servicios: Servicio[
           {t.contacto.exitoAlternativa}{" "}
           <a
             href={`mailto:${CORREO}`}
+            title="Enviar correo a Podio Chile"
             className="font-medium text-[var(--color-brand)] underline underline-offset-2"
           >
             {CORREO}
@@ -368,7 +369,7 @@ export default function FormularioContacto({ servicios }: { servicios: Servicio[
 
         <p className="text-center text-xs text-[var(--color-text-muted)]">
           {t.contacto.legal1}{" "}
-          <Link href="/privacidad" className="underline hover:text-[var(--color-brand)]">
+          <Link href="/privacidad" title={t.contacto.legalLink} className="underline hover:text-[var(--color-brand)]">
             {t.contacto.legalLink}
           </Link>
           {t.contacto.legal2}

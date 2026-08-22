@@ -77,6 +77,7 @@ export default function ContactoSection({
                   {href ? (
                     <a
                       href={href}
+                      title={titulo}
                       {...(externo
                         ? { target: "_blank", rel: "noopener noreferrer" }
                         : {})}

@@ -406,6 +406,7 @@ export default function CotizarModal({
 
                 <a
                   href={enlaceWhatsapp}
+                  title={t.cotizar.whatsappBoton}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block min-w-0"
@@ -491,6 +492,7 @@ export default function CotizarModal({
                 <Link
                   href={enlaceFormulario}
                   onClick={onClose}
+                  title={t.cotizar.formularioBoton}
                   className="block min-w-0"
                 >
                   <Button

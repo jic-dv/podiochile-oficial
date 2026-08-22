@@ -55,8 +55,7 @@ export default function OpengraphImage() {
             Tu presencia digital, profesional desde el primer día
           </div>
           <div style={{ fontSize: 28, color: "#b8b2a4", marginTop: 24, maxWidth: 900 }}>
-            Landing pages, sitios multipágina y aplicaciones web a medida como CRM,
-            para profesionales y empresas.
+            {"Landing pages, sitios multipágina y aplicaciones web a medida como CRM, para profesionales y empresas."}
           </div>
         </div>
 

@@ -1,9 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import { CREADOR } from "@/shared/lib/creador";
-import { IconGithub, IconLinkedin } from "@/shared/lib/icons";
 import { useI18n } from "@/shared/lib/i18n/I18nProvider";
+import { IconGithub, IconLinkedin } from "@/shared/lib/icons";
+import Image from "next/image";
 
 const REDES = [
   { nombre: "LinkedIn", href: CREADOR.linkedin, Icon: IconLinkedin },
@@ -27,10 +27,11 @@ export default function CreditoCreador() {
       <div className="mt-2.5 flex items-center gap-2.5">
         <Image
           src={CREADOR.avatar}
-          alt=""
+          alt="Avatar José Contreras"
           width={72}
           height={72}
           sizes="36px"
+          title="Avatar José Contreras"
           className="h-9 w-9 shrink-0 rounded-full object-cover ring-1 ring-[var(--footer-border)]"
         />
         <div className="flex-1">
@@ -49,6 +50,7 @@ export default function CreditoCreador() {
               href={href}
               target="_blank"
               rel="noopener noreferrer me"
+              title={`${nombre}`}
               aria-label={`${t.footer.verPerfil} ${nombre}`}
               className="flex h-8 w-8 items-center justify-center rounded-[var(--radius-md)] text-[var(--footer-text)] transition-colors duration-[var(--duration-fast)] hover:bg-[var(--footer-card)] hover:text-[var(--footer-link-hover)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--footer-link-hover)]"
             >

@@ -121,6 +121,7 @@ export default function PreciosSection({
                 <div className="mt-5 border-t border-[var(--color-border-subtle)] pt-5">
                   <Link
                     href={`/servicios/${servicio.slug}`}
+                    title={`${t.servicios.verDetalle} - ${servicio.titulo[locale]}`}
                     className="group inline-flex max-w-full items-center gap-1.5 text-sm font-semibold text-[var(--color-brand)] hover:underline"
                   >
                     <span className="truncate">{t.servicios.verDetalle}</span>
@@ -222,6 +223,7 @@ export default function PreciosSection({
                     <td className="px-6 py-5">
                       <Link
                         href={`/servicios/${servicio.slug}`}
+                        title={`${t.servicios.verDetalle} - ${servicio.titulo[locale]}`}
                         className="group inline-flex items-center gap-1.5 whitespace-nowrap text-sm font-semibold text-[var(--color-brand)] hover:underline"
                       >
                         {t.servicios.verDetalle}
@@ -246,6 +248,7 @@ export default function PreciosSection({
           {t.precios.nota}{" "}
           <Link
             href="/#contacto"
+            title={t.precios.notaLink}
             className="font-medium text-[var(--color-brand)] hover:underline"
           >
             {t.precios.notaLink}

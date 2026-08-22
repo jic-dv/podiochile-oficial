@@ -51,6 +51,7 @@ export default function Footer({ servicios }: { servicios: Servicio[] }) {
             <Link
               href="/"
               aria-label={`Podio Chile - ${t.nav.inicio}`}
+              title={`Podio Chile - ${t.nav.inicio}`}
               className="mb-4 inline-flex rounded-sm"
             >
               <Logo alto={32} placa={false} />
@@ -79,6 +80,7 @@ export default function Footer({ servicios }: { servicios: Servicio[] }) {
                       <Link
                         href={link.href}
                         aria-current={activo ? "page" : undefined}
+                        title={`${link.label}`}
                         className={cn(
                           "text-sm transition-colors duration-(--duration-fast) hover:text-(--footer-link-hover)",
                           activo

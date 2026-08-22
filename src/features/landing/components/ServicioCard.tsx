@@ -30,6 +30,7 @@ export default function ServicioCard({ servicio }: { servicio: Servicio }) {
   return (
     <Link
       href={`/servicios/${servicio.slug}`}
+      title={`${servicio.titulo[locale]} - ${t.servicios.verDetalle}`}
       className={cn(
         "group relative flex h-full w-full flex-col overflow-hidden rounded-[var(--radius-xl)] border bg-[var(--color-surface-raised)] p-6",
         "shadow-[var(--shadow-card)] transition-[translate,box-shadow,border-color] duration-[var(--duration-slow)] ease-[var(--ease-soft)]",

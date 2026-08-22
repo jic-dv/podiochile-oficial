@@ -52,7 +52,8 @@ export default function TerminosPage() {
       </p>
       <ul>
         <li>
-          Correo: <a href={`mailto:${CORREO}`}>{CORREO}</a>
+          Correo:{" "}
+          <a href={`mailto:${CORREO}`} title="Enviar correo a Podio Chile">{CORREO}</a>
         </li>
         <li>Teléfono y WhatsApp: {WHATSAPP_DISPLAY}</li>
       </ul>
@@ -294,7 +295,7 @@ export default function TerminosPage() {
       <h2 id="datos">14. Protección de datos</h2>
       <p>
         El tratamiento de datos personales se rige por nuestra{" "}
-        <Link href="/privacidad">Política de Privacidad</Link>, elaborada
+        <Link href="/privacidad" title="Política de Privacidad">Política de Privacidad</Link>, elaborada
         conforme a la Ley N° 21.719.
       </p>
       <p>

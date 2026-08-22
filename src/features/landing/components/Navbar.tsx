@@ -144,6 +144,7 @@ export default function Navbar() {
           <Link
             href="/"
             aria-label={`Podio Chile - ${t.nav.inicio}`}
+            title={`Podio Chile - ${t.nav.inicio}`}
             className="flex shrink-0 items-center rounded-[var(--radius-sm)]"
           >
             <Logo alto={30} placa={false} priority />
@@ -158,6 +159,7 @@ export default function Navbar() {
                 key={href}
                 href={href}
                 aria-current={activo ? "location" : undefined}
+                title={`${label}`}
                 className={cn(
                   "group flex items-center gap-1.5 rounded-[var(--radius-md)] px-3 py-2 text-sm font-medium transition-colors duration-[var(--duration-fast)]",
                   activo
@@ -243,7 +245,7 @@ export default function Navbar() {
               aria-hidden="true"
             />
 
-            <Link href="/#contacto" className="hidden lg:block">
+            <Link href="/#contacto" title={t.nav.ctaExperto} className="hidden lg:block">
               <Button size="sm">{t.nav.ctaExperto}</Button>
             </Link>
 
@@ -323,6 +325,7 @@ export default function Navbar() {
                     href={href}
                     onClick={() => setMenuAbierto(false)}
                     aria-current={activo ? "location" : undefined}
+                    title={label}
                     className={cn(
                       "flex min-h-11 items-center gap-3 rounded-[var(--radius-md)] px-3 py-3 text-sm font-medium transition-colors duration-[var(--duration-fast)]",
                       activo
@@ -350,6 +353,7 @@ export default function Navbar() {
             <Link
               href="/#contacto"
               onClick={() => setMenuAbierto(false)}
+              title={t.nav.ctaExperto}
               className="block"
             >
               <Button size="lg" className="w-full">

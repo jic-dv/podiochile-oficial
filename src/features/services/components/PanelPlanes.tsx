@@ -390,6 +390,7 @@ export default function PanelPlanes({
 
           <a
             href={enlaceWhatsapp}
+            title={t.cotizar.whatsappBoton}
             target="_blank"
             rel="noopener noreferrer"
             className="mt-2 block"

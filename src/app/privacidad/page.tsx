@@ -57,7 +57,7 @@ export default function PrivacidadPage() {
       <ul>
         <li>
           Correo de contacto en materia de datos:{" "}
-          <a href={`mailto:${CORREO}`}>{CORREO}</a>
+          <a href={`mailto:${CORREO}`} title="Enviar correo a Podio Chile">{CORREO}</a>
         </li>
         <li>Teléfono y WhatsApp: {WHATSAPP_DISPLAY}</li>
       </ul>
@@ -256,7 +256,8 @@ export default function PrivacidadPage() {
       </ul>
       <h3>Cómo ejercerlos</h3>
       <p>
-        Escríbenos a <a href={`mailto:${CORREO}`}>{CORREO}</a> indicando qué
+        Escríbenos a{" "}
+        <a href={`mailto:${CORREO}`} title="Enviar correo a Podio Chile">{CORREO}</a> indicando qué
         derecho quieres ejercer. Para proteger tu información podemos pedirte
         que acredites tu identidad antes de responder.
       </p>
@@ -286,7 +287,8 @@ export default function PrivacidadPage() {
       </ul>
       <p>
         Ninguna medida elimina el riesgo por completo. Si detectas una
-        vulnerabilidad, avísanos a <a href={`mailto:${CORREO}`}>{CORREO}</a>.
+        vulnerabilidad, avísanos a{" "}
+        <a href={`mailto:${CORREO}`} title="Enviar correo a Podio Chile">{CORREO}</a>.
       </p>
 
       <h2 id="brechas">9. Brechas de seguridad</h2>
@@ -307,7 +309,7 @@ export default function PrivacidadPage() {
         <strong>no usa cookies de seguimiento, publicidad ni analítica</strong>.
         Solo guarda tus preferencias de tema e idioma en el almacenamiento local
         del navegador, que no sale de tu dispositivo. El detalle está en la{" "}
-        <Link href="/cookies">Política de Cookies</Link>.
+        <Link href="/cookies" title="Política de Cookies">Política de Cookies</Link>.
       </p>
 
       <h2 id="menores">11. Menores de edad</h2>
@@ -329,7 +331,7 @@ export default function PrivacidadPage() {
       <h2 id="reclamos">13. Contacto y reclamos</h2>
       <p>
         Para cualquier consulta sobre esta política escribe a{" "}
-        <a href={`mailto:${CORREO}`}>{CORREO}</a>.
+        <a href={`mailto:${CORREO}`} title="Enviar correo a Podio Chile">{CORREO}</a>.
       </p>
       <p>
         Si consideras que no atendimos correctamente tu solicitud, puedes

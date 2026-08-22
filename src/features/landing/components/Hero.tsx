@@ -103,7 +103,7 @@ export default function Hero() {
 
           <Reveal delay={280}>
             <div className="mt-10 flex w-full flex-col items-stretch justify-center gap-3 lg:flex-row lg:items-center">
-              <Link href="/#servicios" className="w-full lg:w-auto">
+              <Link href="/#servicios" title={t.hero.ctaPrimario} className="w-full lg:w-auto">
                 <Button size="lg" className="group w-full lg:w-auto">
                   {t.hero.ctaPrimario}
 
@@ -114,7 +114,7 @@ export default function Hero() {
                 </Button>
               </Link>
 
-              <Link href="/#contacto" className="w-full lg:w-auto">
+              <Link href="/#contacto" title={t.hero.ctaSecundario} className="w-full lg:w-auto">
                 <Button
                   variant="outline"
                   size="lg"

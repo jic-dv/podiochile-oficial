@@ -32,6 +32,7 @@ export default function PaginaLegal({ titulo, descripcion, secciones, children }
             <li>
               <Link
                 href="/"
+                title="Inicio"
                 className="text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-brand)]"
               >
                 Inicio
@@ -85,6 +86,7 @@ export default function PaginaLegal({ titulo, descripcion, secciones, children }
                   <li key={s.id}>
                     <a
                       href={`#${s.id}`}
+                      title={s.titulo}
                       className="-ml-px block border-l-2 border-transparent py-1.5 pl-4 text-sm text-[var(--color-text-muted)] transition-[color,border-color] duration-[var(--duration-fast)] hover:border-[var(--color-brand-border)] hover:text-[var(--color-brand)]"
                     >
                       {s.titulo}

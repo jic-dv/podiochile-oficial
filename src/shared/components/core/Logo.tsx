@@ -1,5 +1,5 @@
-import Image from "next/image";
 import { cn } from "@/shared/lib/cn";
+import Image from "next/image";
 
 /**
  * El archivo de marca es dorado y blanco sobre transparente: medido contra la
@@ -40,7 +40,8 @@ export default function Logo({
     <span
       className={cn(
         "inline-flex items-center",
-        placa && "rounded-[var(--radius-md)] bg-[var(--logo-plate)] px-2.5 py-1.5",
+        placa &&
+          "rounded-[var(--radius-md)] bg-[var(--logo-plate)] px-2.5 py-1.5",
         className,
       )}
     >
@@ -53,6 +54,7 @@ export default function Logo({
         unoptimized
         style={{ height: alto, width: "auto" }}
         className="block"
+        title="Logo Podio Chile"
       />
     </span>
   );

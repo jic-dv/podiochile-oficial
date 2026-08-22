@@ -121,6 +121,7 @@ export default function ServicioDetalle({ servicio, otros }: Props) {
               <li className="shrink-0">
                 <Link
                   href="/"
+                  title={t.detalle.inicio}
                   className="text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-brand)]"
                 >
                   {t.detalle.inicio}
@@ -134,6 +135,7 @@ export default function ServicioDetalle({ servicio, otros }: Props) {
               <li className="shrink-0">
                 <Link
                   href="/#servicios"
+                  title={t.detalle.servicios}
                   className="text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-brand)]"
                 >
                   {t.detalle.servicios}
@@ -316,6 +318,7 @@ export default function ServicioDetalle({ servicio, otros }: Props) {
                       <Link
                         key={otro.id}
                         href={`/servicios/${otro.slug}`}
+                        title={otro.titulo[locale]}
                         className="group flex min-w-0 h-full items-start gap-4 overflow-hidden rounded-[var(--radius-xl)] border border-[var(--color-border)] bg-[var(--color-surface-raised)] p-5 shadow-[var(--shadow-sm)] transition-[translate,box-shadow,border-color] duration-[var(--duration-slow)] ease-[var(--ease-soft)] hover:-translate-y-0.5 hover:border-[var(--color-brand-border)] hover:shadow-[var(--shadow-md)]"
                       >
                         <span

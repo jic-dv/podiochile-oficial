@@ -219,6 +219,7 @@ export default function BotonesFlotantes() {
           {/* ABRIR WHATSAPP */}
           <a
             href={enlace}
+            title={t.flotantes.whatsappTitulo}
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setAbierto(false)}
@@ -317,10 +318,11 @@ export default function BotonesFlotantes() {
         >
           <Image
             src={CREADOR.avatar}
-            alt=""
+            alt="Avatar José Contreras"
             width={112}
             height={112}
             sizes="56px"
+            title="Avatar José Contreras"
             className="h-full w-full rounded-full object-cover"
           />
 

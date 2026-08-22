@@ -202,6 +202,7 @@ export default function BannerCookies() {
           {t.cookies.bannerPie}{" "}
           <Link
             href="/cookies"
+            title={t.footer.cookies}
             className="font-medium text-(--color-brand) underline underline-offset-2"
           >
             {t.footer.cookies}
@@ -209,6 +210,7 @@ export default function BannerCookies() {
           {" · "}
           <Link
             href="/privacidad"
+            title={t.footer.privacidad}
             className="font-medium text-(--color-brand) underline underline-offset-2"
           >
             {t.footer.privacidad}

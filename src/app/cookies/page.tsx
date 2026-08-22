@@ -145,9 +145,10 @@ export default function CookiesPage() {
 
       <h2 id="contacto">7. Contacto</h2>
       <p>
-        Dudas sobre esta política: <a href={`mailto:${CORREO}`}>{CORREO}</a>. El tratamiento
-        de datos personales se explica en la{" "}
-        <Link href="/privacidad">Política de Privacidad</Link>.
+        Dudas sobre esta política:{" "}
+        <a href={`mailto:${CORREO}`} title="Enviar correo a Podio Chile">{CORREO}</a>. El
+        tratamiento de datos personales se explica en la{" "}
+        <Link href="/privacidad" title="Política de Privacidad">Política de Privacidad</Link>.
       </p>
     </PaginaLegal>
   );
