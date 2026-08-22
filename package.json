@@ -1,17 +1,28 @@
 {
-  "name": "podiochile-app",
+  "name": "podiochile",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "check:contacto": "tsx --tsconfig tsconfig.json src/features/contact/schemas/contact.schema.check.ts",
+    "check:mailto": "tsx --tsconfig tsconfig.json src/features/contact/lib/mailto.check.ts",
+    "check:cotizacion": "tsx --tsconfig tsconfig.json src/features/quotes/lib/quotes.check.ts"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.9.1",
+    "clsx": "^2.1.1",
+    "embla-carousel-react": "^8.6.0",
     "next": "16.3.1",
     "react": "19.2.8",
-    "react-dom": "19.2.8"
+    "react-dom": "19.2.8",
+    "react-hook-form": "^7.85.0",
+    "react-icons": "^5.7.0",
+    "tailwind-merge": "^3.6.0",
+    "yet-another-react-lightbox": "^3.32.2",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
@@ -21,6 +32,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.3.1",
     "tailwindcss": "^4",
+    "tsx": "^4.23.12",
     "typescript": "^5"
   }
 }

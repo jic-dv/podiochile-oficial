@@ -1,26 +1,302 @@
 @import "tailwindcss";
+@import "./theme.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* ─── Tokens no cromáticos ──────────────────────────────────────────────
+   La paleta vive en theme.css. Aquí quedan solo los tokens que no dependen
+   del tema: tipografía, radios y tiempos. */
+@theme {
+  --font-sans: var(--font-inter, "Inter", "Segoe UI", system-ui, sans-serif);
+  --font-display: var(--font-inter, "Inter", "Segoe UI", system-ui, sans-serif);
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-2xl: 32px;
+  --radius-full: 9999px;
+
+  /* Duraciones holgadas y curva simétrica: el hover se sentía seco con la
+     curva anterior, que frenaba de golpe al final. --ease-soft es un
+     easeOutCubic para los desplazamientos de tarjeta. */
+  --duration-fast: 200ms;
+  --duration-base: 300ms;
+  --duration-slow: 420ms;
+  --duration-reveal: 700ms;
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-soft: cubic-bezier(0.33, 1, 0.68, 1);
+  --ease-reveal: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ─── Base ───────────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  /* Instantáneo por defecto. Con `smooth` puesto aquí sin condición, el salto
+     al tope que hace el router en cada cambio de ruta se volvía una animación
+     larga desde donde estabas: viniendo del pie del home, /privacidad,
+     /terminos y /cookies abrían por el final. */
+  scroll-behavior: auto;
+  scroll-padding-top: 5rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* La animación es para las anclas de la misma página, y `:target` existe
+   exactamente cuando la URL trae uno: al ir a /#servicios se desliza, al ir a
+   /privacidad no hay ancla y el salto es instantáneo. Donde `:has()` no exista,
+   la regla se descarta entera y queda el `auto` de arriba: se pierde el
+   deslizamiento, no el comportamiento correcto. */
+html:has(:target) {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-surface);
+  color: var(--color-text-body);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* El cambio de tema no debe parecer un parpadeo */
+  transition:
+    background-color var(--duration-slow) var(--ease-standard),
+    color var(--duration-slow) var(--ease-standard);
+}
+
+a,
+button,
+select,
+radio,
+input {
+  cursor: pointer;
+}
+
+/* Curva por defecto para todo lo que declara una transicion sin especificar
+   easing. Sin esto, 22 de las 30 transiciones del proyecto caian en el `ease`
+   del navegador, que no es el mismo que usan las otras 8.
+   Va dentro de @layer base a proposito: el CSS sin capa vence a cualquier
+   capa sin importar la especificidad, asi que fuera de aqui esta regla
+   anularia todas las utilidades ease-* del proyecto. En base, las utilidades
+   de Tailwind ganan, que es lo que se busca. */
+/* La ficha de servicio lleva barra fija inferior SOLO en móvil (lg:hidden).
+   Mientras está montada, los botones flotantes suben para no quedar encima de
+   ella; en escritorio esa barra no existe, así que vuelven a su sitio. Antes
+   esto se resolvía con una variable puesta desde JS sin distinguir el ancho, y
+   los dejaba flotando demasiado arriba en pantallas grandes. */
+/* Punto de disponibilidad del botón de WhatsApp. El latido es una onda que se
+   expande y se desvanece, hecha con box-shadow: no toca el layout ni obliga a
+   pintar de nuevo, solo compone. Sin borde: el aro blanco lo hacía ver como
+   una insignia pegada y no como un estado. */
+@keyframes latido-disponible {
+  0% {
+    box-shadow: 0 0 0 0 rgb(37 211 102 / 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 0.6rem rgb(37 211 102 / 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgb(37 211 102 / 0);
+  }
+}
+
+.punto-disponible {
+  animation: latido-disponible 2.6s var(--ease-standard) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .punto-disponible {
+    animation: none;
+  }
+}
+
+:root[data-barra-inferior] {
+  --fab-bottom: 5.25rem;
+}
+
+@media (min-width: 1024px) {
+  :root[data-barra-inferior] {
+    --fab-bottom: 1.25rem;
+  }
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    transition-timing-function: var(--ease-standard);
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-brand-border);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* ─── Revelado por scroll ────────────────────────────────────────────────
+   Solo opacidad: el desplazamiento vertical hacía que la página pareciera
+   moverse sola al cambiar de vista. Una aparición limpia es más tranquila y
+   además `opacity` se compone en GPU sin disparar layout.
+
+   El estado inicial cuelga de .js (que pone el script del head) para que sin
+   JavaScript el contenido se vea, en vez de quedar en opacity: 0. */
+.js [data-reveal] {
+  opacity: 0;
+  transition: opacity var(--duration-reveal) var(--ease-standard);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity;
+}
+
+.js [data-reveal="visible"] {
+  opacity: 1;
+}
+
+/* Liberar la capa de composición una vez terminada la entrada */
+.js [data-reveal="visible"][data-reveal-done] {
+  will-change: auto;
+}
+
+/* ─── Documentos legales ─────────────────────────────────────────────────
+   Los textos legales son prosa larga: se estilan por contexto en vez de
+   repetir utilidades en cada parrafo del documento. */
+.contenido-legal > * + * {
+  margin-top: 1rem;
+}
+
+.contenido-legal h2 {
+  margin-top: 2.75rem;
+  margin-bottom: 1rem;
+  font-size: 1.375rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--color-text-primary);
+  scroll-margin-top: 6rem;
+}
+
+.contenido-legal h3 {
+  margin-top: 1.75rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.contenido-legal p,
+.contenido-legal li {
+  color: var(--color-text-body);
+  line-height: 1.7;
+}
+
+.contenido-legal ul,
+.contenido-legal ol {
+  padding-left: 1.5rem;
+  list-style: disc;
+}
+
+.contenido-legal ol {
+  list-style: decimal;
+}
+
+.contenido-legal li + li {
+  margin-top: 0.5rem;
+}
+
+.contenido-legal strong {
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.contenido-legal a {
+  color: var(--color-brand);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.contenido-legal table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+}
+
+.contenido-legal th,
+.contenido-legal td {
+  border: 1px solid var(--color-border);
+  padding: 0.625rem 0.875rem;
+  text-align: left;
+  vertical-align: top;
+  color: var(--color-text-body);
+}
+
+.contenido-legal th {
+  background-color: var(--color-surface-muted);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+/* Elemento firma: barra de acento en tarjetas destacadas */
+.card-accent::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--color-brand-solid),
+    var(--color-brand-border)
+  );
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  z-index: 1;
+}
+
+.hero-gradient {
+  background:
+    radial-gradient(
+      ellipse 80% 60% at 50% -10%,
+      var(--hero-glow-a) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse 50% 40% at 100% 50%,
+      var(--hero-glow-b) 0%,
+      transparent 50%
+    ),
+    var(--color-surface);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-subtle);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html,
+  html:has(:target) {
+    scroll-behavior: auto;
+  }
+  .js [data-reveal] {
+    opacity: 1;
+    transition: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }

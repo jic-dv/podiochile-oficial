@@ -1,0 +1,189 @@
+/* ─────────────────────────────────────────────────────────────────────────
+   Paleta de podiochile.com
+
+   La escala de marca es la definida por el proyecto: dorado ámbar. Los pasos
+   50-900 se declaran en @theme para que existan las utilidades bg-brand-500,
+   text-brand-700, etc.
+
+   Los tokens semánticos de más abajo son los que usan los componentes. Existen
+   porque el dorado NO se comporta igual en ambos temas: medido contra la
+   superficie clara, brand-500 da 1.81:1 y es ilegible como texto. Por eso el
+   tema claro toma brand-800 para texto y el oscuro brand-400, y el relleno
+   sólido vive en su propio par de tokens.
+   ───────────────────────────────────────────────────────────────────────── */
+
+@theme {
+  --color-brand-50: #fff9e6;
+  --color-brand-100: #ffefbf;
+  --color-brand-200: #ffe08a;
+  --color-brand-300: #ffd155;
+  --color-brand-400: #ffc233;
+  --color-brand-500: #f5b301;
+  --color-brand-600: #d99a00;
+  --color-brand-700: #b57f00;
+  --color-brand-800: #8f6500;
+  --color-brand-900: #6b4c00;
+
+  /* Acento esmeralda: marca lo incluido y lo correcto. Se mantiene porque
+     cumple una función semántica distinta a la del dorado. */
+  --color-accent-50: #eaf7f1;
+  --color-accent-100: #cfeee1;
+  --color-accent-200: #9fdcc4;
+  --color-accent-300: #6fc9a6;
+  --color-accent-400: #4fd6a4;
+  --color-accent-500: #22a578;
+  --color-accent-600: #178a63;
+  --color-accent-700: #0f7150;
+  --color-accent-800: #0b5940;
+  --color-accent-900: #084231;
+}
+
+/* ─── Tema claro ───────────────────────────────────────────────────────── */
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+
+  /* Neutros cálidos, no grises fríos: acompañan al dorado sin pelear con él */
+  --color-surface: #fcfcfa;
+  --color-surface-raised: #ffffff;
+  --color-surface-muted: #f6f5f1;
+  --color-surface-inset: #f0efe9;
+  --color-border: #e3e0d6;
+  --color-border-subtle: #edebe3;
+  /* Contorno de un control de formulario. `--color-border` separa bloques y da
+     1.30:1 contra el panel: como única señal de que existe una casilla, es
+     invisible. WCAG 1.4.11 pide 3:1 a los elementos de interfaz, y este es el
+     paso más claro que lo cumple sobre las cuatro superficies (3.05). */
+  --color-border-strong: #8f887a;
+
+  --color-text-primary: #1a1712;
+  --color-text-body: #454037;
+  --color-text-muted: #676154;
+  --color-text-subtle: #736c5e;
+
+  /* Texto e iconos de marca: brand-800 es el paso más claro que supera 4.5
+     sobre las cuatro superficies del tema */
+  --color-brand: #8f6500;
+  --color-brand-hover: #6b4c00;
+  --color-brand-soft: #fff9e6;
+  --color-brand-ring: rgb(245 179 1 / 0.28);
+
+  /* Bordes, contornos y separadores de marca. Un borde no es texto: le basta
+     3:1 (WCAG 1.4.11), no 4.5. brand-700 es el paso más claro que cumple ese
+     3:1 sobre las cinco superficies claras (peor caso 3.04 sobre
+     surface-inset); brand-600 se queda en 2.13 y no sirve ni como borde. */
+  --color-brand-border: #b57f00;
+
+  /* Relleno sólido: aquí sí va el dorado vivo, con texto oscuro encima */
+  --color-brand-solid: #f5b301;
+  --color-brand-solid-hover: #d99a00;
+  --color-brand-on-solid: #141105;
+
+  --color-accent: #0f7150;
+  --color-accent-soft: #eaf7f1;
+
+  --color-success: #146c43;
+  --color-warning: #8a5a00;
+  --color-error: #b3261e;
+
+  --shadow-sm: 0 1px 3px rgb(26 23 18 / 0.07), 0 1px 2px rgb(26 23 18 / 0.05);
+  --shadow-md: 0 4px 12px rgb(26 23 18 / 0.08), 0 2px 4px rgb(26 23 18 / 0.05);
+  --shadow-lg: 0 8px 24px rgb(26 23 18 / 0.1), 0 4px 8px rgb(26 23 18 / 0.06);
+  --shadow-xl: 0 16px 40px rgb(26 23 18 / 0.12), 0 8px 16px rgb(26 23 18 / 0.07);
+  --shadow-brand: 0 8px 26px rgb(245 179 1 / 0.35);
+  --shadow-card: 0 2px 8px rgb(26 23 18 / 0.06), 0 0 0 1px rgb(227 224 214 / 0.75);
+
+  --hero-glow-a: rgb(245 179 1 / 0.16);
+  --hero-glow-b: rgb(34 165 120 / 0.08);
+  --grid-opacity: 0.03;
+
+  /* Placa oscura tras el logo: el archivo de marca es dorado y blanco sobre
+     transparente y sin ella desaparece en el tema claro */
+  --logo-plate: #1a1712;
+}
+
+/* ─── Tema oscuro: negro neutro, sin tinte ─────────────────────────────── */
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --color-surface: #0a0a0a;
+  --color-surface-raised: #161616;
+  --color-surface-muted: #111111;
+  --color-surface-inset: #1f1f1f;
+  --color-border: #2c2c2c;
+  --color-border-subtle: #222222;
+  --color-border-strong: #737373;
+
+  --color-text-primary: #f8f7f4;
+  --color-text-body: #d2cfc8;
+  --color-text-muted: #a39e93;
+  --color-text-subtle: #8d887c;
+
+  --color-brand: #ffc233;
+  --color-brand-hover: #ffd155;
+  --color-brand-soft: #241b03;
+  --color-brand-ring: rgb(255 194 51 / 0.3);
+  /* En oscuro el dorado de texto ya es claro: el borde no necesita otro paso */
+  --color-brand-border: #ffc233;
+
+  --color-brand-solid: #f5b301;
+  --color-brand-solid-hover: #ffd155;
+  --color-brand-on-solid: #141105;
+
+  --color-accent: #4fd6a4;
+  --color-accent-soft: #0c211a;
+
+  --color-success: #5ddba0;
+  --color-warning: #ffc233;
+  --color-error: #ff6b61;
+
+  --shadow-sm: 0 1px 3px rgb(0 0 0 / 0.6), 0 1px 2px rgb(0 0 0 / 0.4);
+  --shadow-md: 0 4px 12px rgb(0 0 0 / 0.6), 0 2px 4px rgb(0 0 0 / 0.45);
+  --shadow-lg: 0 8px 24px rgb(0 0 0 / 0.65), 0 4px 8px rgb(0 0 0 / 0.5);
+  --shadow-xl: 0 16px 40px rgb(0 0 0 / 0.7), 0 8px 16px rgb(0 0 0 / 0.55);
+  --shadow-brand: 0 8px 26px rgb(245 179 1 / 0.28);
+  --shadow-card: 0 2px 10px rgb(0 0 0 / 0.5), 0 0 0 1px rgb(44 44 44 / 0.9);
+
+  --hero-glow-a: rgb(245 179 1 / 0.14);
+  --hero-glow-b: rgb(79 214 164 / 0.08);
+  --grid-opacity: 0.045;
+
+  /* En oscuro el logo ya contrasta contra la superficie */
+  --logo-plate: transparent;
+}
+
+/* ─── Navbar: oscuro en ambos temas ─────────────────────────────────────
+   Va después de los dos bloques de tema y sin selector de tema a propósito:
+   estos valores no dependen del tema porque la barra es oscura siempre.
+
+   El motivo es el archivo de marca: es dorado y blanco sobre transparente, y
+   su tercio central medido contra una superficie clara da 1.04:1, o sea
+   desaparece. Con la barra oscura el logo se lee sin necesidad de placa.
+
+   La opacidad es alta (0.88 arriba, 0.96 al desplazar) para que el fondo
+   efectivo sea estable y el contraste del texto se pueda garantizar por
+   medición, en vez de depender de lo que pase por debajo. */
+/* Pie de página: oscuro en ambos temas, como el navbar. Fuera de los bloques
+   de tema porque no depende del tema. El logo dorado y blanco se lee bien sobre
+   oscuro y ahí la placa sobra. */
+:root {
+  --footer-bg: #12110e;
+  --footer-border: rgb(255 255 255 / 0.10);
+  --footer-title: #f8f7f4;
+  --footer-text: #b3ac9c;
+  --footer-muted: #8d887c;
+  --footer-link-hover: #ffc233;
+  --footer-card: rgb(255 255 255 / 0.05);
+}
+
+:root {
+  --navbar-bg: rgb(20 18 14 / 0.88);
+  --navbar-bg-scrolled: rgb(16 15 12 / 0.96);
+  --navbar-border: rgb(255 255 255 / 0.1);
+  --navbar-text: #eae6dc;
+  --navbar-muted: #b3ac9c;
+  --navbar-hover-bg: rgb(255 255 255 / 0.08);
+  --navbar-active-bg: rgb(245 179 1 / 0.16);
+  --navbar-active-text: #ffc233;
+  --navbar-overlay: rgb(10 9 7 / 0.5);
+}
