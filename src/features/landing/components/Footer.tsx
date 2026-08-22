@@ -44,28 +44,28 @@ export default function Footer({ servicios }: { servicios: Servicio[] }) {
   ];
 
   return (
-    <footer className="border-t border-[var(--footer-border)] bg-[var(--footer-bg)]">
+    <footer className="border-t border-(--footer-border) bg-(--footer-bg)">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div>
             <Link
               href="/"
               aria-label={`Podio Chile - ${t.nav.inicio}`}
-              className="mb-4 inline-flex rounded-[var(--radius-sm)]"
+              className="mb-4 inline-flex rounded-sm"
             >
               <Logo alto={32} placa={false} />
             </Link>
-            <p className="mb-4 text-sm leading-relaxed text-[var(--footer-text)]">
+            <p className="mb-4 text-sm leading-relaxed text-(--footer-text)">
               {t.footer.descripcion}
             </p>
-            <p className="text-xs text-[var(--footer-muted)]">
+            <p className="text-xs text-(--footer-muted)">
               {t.footer.ubicacion}
             </p>
           </div>
 
           {columnas.map((col) => (
             <div key={col.titulo}>
-              <h2 className="mb-4 font-display text-sm font-semibold uppercase tracking-wider text-[var(--footer-title)]">
+              <h2 className="mb-4 font-display text-sm font-semibold uppercase tracking-wider text-(--footer-title)">
                 {col.titulo}
               </h2>
               <ul role="list" className="space-y-2.5">
@@ -80,10 +80,10 @@ export default function Footer({ servicios }: { servicios: Servicio[] }) {
                         href={link.href}
                         aria-current={activo ? "page" : undefined}
                         className={cn(
-                          "text-sm transition-colors duration-[var(--duration-fast)] hover:text-[var(--footer-link-hover)]",
+                          "text-sm transition-colors duration-(--duration-fast) hover:text-(--footer-link-hover)",
                           activo
-                            ? "font-semibold text-[var(--footer-link-hover)]"
-                            : "text-[var(--footer-text)]",
+                            ? "font-semibold text-(--footer-link-hover)"
+                            : "text-(--footer-text)",
                         )}
                       >
                         {link.label}
@@ -99,7 +99,7 @@ export default function Footer({ servicios }: { servicios: Servicio[] }) {
           ))}
         </div>
 
-        <div className="mt-12 flex flex-col gap-2 border-t border-[var(--footer-border)] pt-6 text-xs text-[var(--footer-muted)] sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-12 flex flex-col gap-2 border-t border-(--footer-border) pt-6 text-xs text-(--footer-muted) sm:flex-row sm:items-center sm:justify-between">
           <p>
             &copy; {year} Podio Chile. {t.footer.derechos}
           </p>
