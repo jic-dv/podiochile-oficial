@@ -30,8 +30,8 @@ export const es = {
     ctaPrimario: "Ver todos los servicios",
     ctaSecundario: "Cotizar gratis",
     stats: [
-      { valor: "+120", label: "Proyectos entregados" },
-      { valor: "98%", label: "Clientes satisfechos" },
+      { valor: "+10", label: "Proyectos entregados" },
+      { valor: "100%", label: "Clientes satisfechos" },
       { valor: "5 días", label: "Entrega más rápida" },
     ],
   },
@@ -220,7 +220,8 @@ export const es = {
     mensajePlaceholder:
       "Ej: Tengo un negocio de nutrición y quiero una landing page para captar pacientes en Santiago...",
     enviar: "Contactar",
-    legal1: "Tus datos se usan solo para responderte esta consulta. No los cedemos a terceros ni te enviamos publicidad, y puedes pedir que los borremos cuando quieras. Detalle en la",
+    legal1:
+      "Tus datos se usan solo para responderte esta consulta. No los cedemos a terceros ni te enviamos publicidad, y puedes pedir que los borremos cuando quieras. Detalle en la",
     legalLink: "política de privacidad",
     legal2: ". No enviamos spam.",
     exitoTitulo: "Falta un paso",
@@ -461,8 +462,8 @@ export const en: Dictionary = {
     ctaPrimario: "View all services",
     ctaSecundario: "Get a free quote",
     stats: [
-      { valor: "+120", label: "Projects delivered" },
-      { valor: "98%", label: "Satisfied clients" },
+      { valor: "+10", label: "Projects delivered" },
+      { valor: "100%", label: "Satisfied clients" },
       { valor: "5 days", label: "Fastest delivery" },
     ],
   },
@@ -652,7 +653,8 @@ export const en: Dictionary = {
     mensajePlaceholder:
       "e.g. I run a nutrition practice and want a landing page to attract patients in Santiago...",
     enviar: "Get in touch",
-    legal1: "Your data is used only to answer this enquiry. We do not share it with third parties or send you marketing, and you can ask us to delete it at any time. Details in our",
+    legal1:
+      "Your data is used only to answer this enquiry. We do not share it with third parties or send you marketing, and you can ask us to delete it at any time. Details in our",
     legalLink: "privacy policy",
     legal2: ". We don't send spam.",
     exitoTitulo: "One step left",
