@@ -1,8 +1,8 @@
-import type { Metadata } from "next";
-import Navbar from "@/features/landing/components/Navbar";
 import Footer from "@/features/landing/components/Footer";
+import Navbar from "@/features/landing/components/Navbar";
 import NoEncontrado from "@/features/landing/components/NoEncontrado";
 import { getServicios } from "@/features/services/api/services.service";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Página no encontrada",

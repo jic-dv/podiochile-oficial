@@ -7,7 +7,9 @@ import Reveal from "@/shared/components/core/Reveal";
 import Button from "@/shared/components/ui/Button";
 import Precio from "@/shared/components/ui/Precio";
 import type {
-  Servicio, Plan, CeldaComparativa,
+  Servicio,
+  Plan,
+  CeldaComparativa,
 } from "@/features/services/schemas/service.schema";
 import { IconCheck, IconMenos, IconComparar } from "@/shared/lib/icons";
 
@@ -19,22 +21,32 @@ function Celda({ valor }: { valor: CeldaComparativa }) {
   if (typeof valor === "boolean") {
     return valor ? (
       <>
-        <IconCheck className="mx-auto h-[1.15rem] w-[1.15rem] text-[var(--color-accent)]" aria-hidden="true" />
+        <IconCheck
+          className="mx-auto h-[1.15rem] w-[1.15rem] text-(--color-accent)"
+          aria-hidden="true"
+        />
         <span className="sr-only">{t.detalle.incluido}</span>
       </>
     ) : (
       <>
-        <IconMenos className="mx-auto h-[1.15rem] w-[1.15rem] text-[var(--color-text-subtle)]" aria-hidden="true" />
+        <IconMenos
+          className="mx-auto h-[1.15rem] w-[1.15rem] text-(--color-text-subtle)"
+          aria-hidden="true"
+        />
         <span className="sr-only">{t.detalle.noIncluido}</span>
       </>
     );
   }
 
   if (typeof valor === "number") {
-    return <span className="font-medium tabular-nums text-[var(--color-text-primary)]">{valor}</span>;
+    return (
+      <span className="font-medium tabular-nums text-(--color-text-primary)">
+        {valor}
+      </span>
+    );
   }
 
-  return <span className="text-[var(--color-text-body)]">{valor[locale]}</span>;
+  return <span className="text-(--color-text-body)">{valor[locale]}</span>;
 }
 
 interface Props {
@@ -45,7 +57,10 @@ interface Props {
 }
 
 export default function ComparativaPaquetes({
-  servicio, indiceActivo, onElegir, onCotizar,
+  servicio,
+  indiceActivo,
+  onElegir,
+  onCotizar,
 }: Props) {
   const { locale, t } = useI18n();
 
@@ -56,7 +71,10 @@ export default function ComparativaPaquetes({
           id="comparar-heading"
           className="mb-6 flex items-center gap-2.5 font-display text-2xl font-bold text-[var(--color-text-primary)]"
         >
-          <IconComparar className="h-6 w-6 text-[var(--color-brand)]" aria-hidden="true" />
+          <IconComparar
+            className="h-6 w-6 text-[var(--color-brand)]"
+            aria-hidden="true"
+          />
           {t.detalle.compararPaquetes}
         </h2>
 
@@ -68,7 +86,10 @@ export default function ComparativaPaquetes({
 
             <thead>
               <tr className="border-b-2 border-[var(--color-border)]">
-                <th scope="col" className="w-[30%] px-5 py-4 align-bottom font-semibold text-[var(--color-text-primary)]">
+                <th
+                  scope="col"
+                  className="w-[30%] px-5 py-4 align-bottom font-semibold text-[var(--color-text-primary)]"
+                >
                   {t.detalle.paquete}
                 </th>
                 {servicio.planes.map((p, i) => (
@@ -81,7 +102,12 @@ export default function ComparativaPaquetes({
                     )}
                   >
                     <span className="block font-display text-xl font-bold tabular-nums text-[var(--color-text-primary)]">
-                      <Precio monto={p.precio} hasta={p.precioHasta} estimado={p.precioEstimado} compacto />
+                      <Precio
+                        monto={p.precio}
+                        hasta={p.precioHasta}
+                        estimado={p.precioEstimado}
+                        compacto
+                      />
                     </span>
                     <span className="mt-0.5 block font-semibold text-[var(--color-text-primary)]">
                       {p.nombre[locale]}
@@ -104,7 +130,9 @@ export default function ComparativaPaquetes({
 
               {/* Resumen de cada paquete en una línea, como en la ficha */}
               <tr className="border-b border-[var(--color-border)]">
-                <td className="px-5 py-3 text-[var(--color-text-muted)]">{t.detalle.incluye}</td>
+                <td className="px-5 py-3 text-[var(--color-text-muted)]">
+                  {t.detalle.incluye}
+                </td>
                 {servicio.planes.map((p, i) => (
                   <td
                     key={p.nivel}
@@ -115,8 +143,14 @@ export default function ComparativaPaquetes({
                   >
                     <ul role="list" className="space-y-1">
                       {p.bullets[locale].map((b) => (
-                        <li key={b} className="flex items-start gap-1.5 text-xs text-[var(--color-text-body)]">
-                          <IconCheck className="mt-0.5 h-3 w-3 shrink-0 text-[var(--color-accent)]" aria-hidden="true" />
+                        <li
+                          key={b}
+                          className="flex items-start gap-1.5 text-xs text-[var(--color-text-body)]"
+                        >
+                          <IconCheck
+                            className="mt-0.5 h-3 w-3 shrink-0 text-[var(--color-accent)]"
+                            aria-hidden="true"
+                          />
                           {b}
                         </li>
                       ))}
@@ -128,8 +162,14 @@ export default function ComparativaPaquetes({
 
             <tbody>
               {servicio.comparativa.map((fila) => (
-                <tr key={fila.label.es} className="border-b border-[var(--color-border-subtle)]">
-                  <th scope="row" className="px-5 py-3 font-normal text-[var(--color-text-body)]">
+                <tr
+                  key={fila.label.es}
+                  className="border-b border-[var(--color-border-subtle)]"
+                >
+                  <th
+                    scope="row"
+                    className="px-5 py-3 font-normal text-[var(--color-text-body)]"
+                  >
                     {fila.label[locale]}
                   </th>
                   {NIVELES.map((nivel, i) => (
@@ -148,7 +188,10 @@ export default function ComparativaPaquetes({
 
               {/* Revisiones y entrega salen del plan, no se repiten en el mock */}
               <tr className="border-b border-[var(--color-border-subtle)]">
-                <th scope="row" className="px-5 py-3 font-normal text-[var(--color-text-body)]">
+                <th
+                  scope="row"
+                  className="px-5 py-3 font-normal text-[var(--color-text-body)]"
+                >
                   {t.detalle.revisiones}
                 </th>
                 {servicio.planes.map((p, i) => (
@@ -165,7 +208,10 @@ export default function ComparativaPaquetes({
               </tr>
 
               <tr className="border-b-2 border-[var(--color-border)]">
-                <th scope="row" className="px-5 py-3 font-normal text-[var(--color-text-body)]">
+                <th
+                  scope="row"
+                  className="px-5 py-3 font-normal text-[var(--color-text-body)]"
+                >
                   {t.detalle.tiempoEntrega}
                 </th>
                 {servicio.planes.map((p, i) => (
@@ -190,7 +236,10 @@ export default function ComparativaPaquetes({
                 {servicio.planes.map((p, i) => (
                   <td
                     key={p.nivel}
-                    className={cn("px-5 py-4", i === indiceActivo && "bg-[var(--color-brand-soft)]")}
+                    className={cn(
+                      "px-5 py-4",
+                      i === indiceActivo && "bg-[var(--color-brand-soft)]",
+                    )}
                   >
                     <span className="mb-2 block font-display text-lg font-bold tabular-nums text-[var(--color-text-primary)]">
                       {formatPrecioPlan(p, t.servicios.desde, true)}

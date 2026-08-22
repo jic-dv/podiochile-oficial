@@ -1,19 +1,25 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { cn } from "@/shared/lib/cn";
+import Logo from "@/shared/components/core/Logo";
 import Button from "@/shared/components/ui/Button";
 import ThemeToggle from "@/shared/components/ui/ThemeToggle";
-import Logo from "@/shared/components/core/Logo";
-import { useI18n } from "@/shared/lib/i18n/I18nProvider";
 import { useSeccionActiva } from "@/shared/hooks/useSeccionActiva";
+import { cn } from "@/shared/lib/cn";
 import type { Locale } from "@/shared/lib/i18n/dictionaries";
+import { useI18n } from "@/shared/lib/i18n/I18nProvider";
 import {
-  IconServicios, IconComoFunciona, IconPrecios, IconFaq,
-  IconMenu, IconCerrar, IconIdioma, IconCheck,
+  IconCerrar,
+  IconCheck,
+  IconComoFunciona,
+  IconFaq,
+  IconIdioma,
+  IconMenu,
+  IconPrecios,
+  IconServicios,
 } from "@/shared/lib/icons";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 
 /** Constante de módulo: si el array se recreara en cada render, el observer
  *  del hook se volvería a suscribir sin parar. */
@@ -67,7 +73,8 @@ export default function Navbar() {
   useEffect(() => {
     if (!idiomaAbierto) return;
     const onClick = (e: MouseEvent) => {
-      if (!idiomaRef.current?.contains(e.target as Node)) setIdiomaAbierto(false);
+      if (!idiomaRef.current?.contains(e.target as Node))
+        setIdiomaAbierto(false);
     };
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setIdiomaAbierto(false);
@@ -98,7 +105,8 @@ export default function Navbar() {
       }
       if (e.key !== "Tab") return;
 
-      const focusables = drawerRef.current?.querySelectorAll<HTMLElement>(FOCUSABLES);
+      const focusables =
+        drawerRef.current?.querySelectorAll<HTMLElement>(FOCUSABLES);
       if (!focusables?.length) return;
 
       const primero = focusables[0];
@@ -141,7 +149,10 @@ export default function Navbar() {
             <Logo alto={30} placa={false} priority />
           </Link>
 
-          <nav aria-label={t.nav.menuPrincipal} className="hidden items-center gap-0.5 lg:flex">
+          <nav
+            aria-label={t.nav.menuPrincipal}
+            className="hidden items-center gap-0.5 lg:flex"
+          >
             {links.map(({ href, label, Icon, activo }) => (
               <Link
                 key={href}
@@ -179,7 +190,10 @@ export default function Navbar() {
                 aria-haspopup="listbox"
                 className={cn(controlNav, "gap-1 px-2 text-sm font-medium")}
               >
-                <IconIdioma className="h-[1.15rem] w-[1.15rem]" aria-hidden="true" />
+                <IconIdioma
+                  className="h-[1.15rem] w-[1.15rem]"
+                  aria-hidden="true"
+                />
                 <span className="text-xs font-semibold tabular-nums">
                   {IDIOMAS.find((i) => i.code === locale)?.short}
                 </span>
@@ -210,7 +224,10 @@ export default function Navbar() {
                       >
                         {idioma.label}
                         {locale === idioma.code && (
-                          <IconCheck className="h-4 w-4 shrink-0" aria-hidden="true" />
+                          <IconCheck
+                            className="h-4 w-4 shrink-0"
+                            aria-hidden="true"
+                          />
                         )}
                       </button>
                     </li>
@@ -295,7 +312,10 @@ export default function Navbar() {
             </button>
           </div>
 
-          <nav aria-label={t.nav.menuPrincipal} className="flex-1 overflow-y-auto p-4">
+          <nav
+            aria-label={t.nav.menuPrincipal}
+            className="flex-1 overflow-y-auto p-4"
+          >
             <ul className="flex flex-col gap-1">
               {links.map(({ href, label, Icon, activo }) => (
                 <li key={href}>
@@ -313,7 +333,9 @@ export default function Navbar() {
                     <Icon
                       className={cn(
                         "h-5 w-5",
-                        activo ? "text-[var(--navbar-active-text)]" : "text-[var(--navbar-muted)]",
+                        activo
+                          ? "text-[var(--navbar-active-text)]"
+                          : "text-[var(--navbar-muted)]",
                       )}
                       aria-hidden="true"
                     />
@@ -325,7 +347,11 @@ export default function Navbar() {
           </nav>
 
           <div className="shrink-0 border-t border-[var(--navbar-border)] p-4">
-            <Link href="/#contacto" onClick={() => setMenuAbierto(false)} className="block">
+            <Link
+              href="/#contacto"
+              onClick={() => setMenuAbierto(false)}
+              className="block"
+            >
               <Button size="lg" className="w-full">
                 {t.nav.ctaExperto}
               </Button>

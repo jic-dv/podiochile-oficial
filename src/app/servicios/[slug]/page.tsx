@@ -1,12 +1,16 @@
-import type { Metadata } from "next";
-import { notFound } from "next/navigation";
-import Navbar from "@/features/landing/components/Navbar";
 import Footer from "@/features/landing/components/Footer";
+import Navbar from "@/features/landing/components/Navbar";
+import {
+  getOtrosServicios,
+  getPrecioDesde,
+  getServicio,
+  getServicios,
+  getSlugs,
+} from "@/features/services/api/services.service";
 import ServicioDetalle from "@/features/services/components/ServicioDetalle";
 import JsonLd from "@/shared/components/core/JsonLd";
-import {
-  getServicio, getSlugs, getServicios, getOtrosServicios, getPrecioDesde,
-} from "@/features/services/api/services.service";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 const SITIO = "https://www.podiochile.com";
 
@@ -14,9 +18,11 @@ export function generateStaticParams() {
   return getSlugs().map((slug) => ({ slug }));
 }
 
-export async function generateMetadata(
-  { params }: { params: Promise<{ slug: string }> },
-): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
   const { slug } = await params;
   const servicio = getServicio(slug);
 
@@ -45,9 +51,11 @@ export async function generateMetadata(
   };
 }
 
-export default async function ServicioPage(
-  { params }: { params: Promise<{ slug: string }> },
-) {
+export default async function ServicioPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const { slug } = await params;
   const servicio = getServicio(slug);
 
@@ -82,7 +90,9 @@ export default async function ServicioPage(
                 name: `${servicio.titulo.es} - ${plan.nombre.es}`,
                 description: plan.resumen.es,
                 lowPrice: plan.precio,
-                ...(plan.precioHasta === null ? {} : { highPrice: plan.precioHasta }),
+                ...(plan.precioHasta === null
+                  ? {}
+                  : { highPrice: plan.precioHasta }),
                 priceCurrency: "CLP",
                 offerCount: 1,
                 url,
@@ -102,8 +112,18 @@ export default async function ServicioPage(
         "@type": "BreadcrumbList",
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Inicio", item: SITIO },
-          { "@type": "ListItem", position: 2, name: "Servicios", item: `${SITIO}/#servicios` },
-          { "@type": "ListItem", position: 3, name: servicio.titulo.es, item: url },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Servicios",
+            item: `${SITIO}/#servicios`,
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: servicio.titulo.es,
+            item: url,
+          },
         ],
       },
     ],

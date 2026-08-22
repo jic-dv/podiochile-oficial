@@ -1,14 +1,14 @@
-import Navbar from "@/features/landing/components/Navbar";
-import Hero from "@/features/landing/components/Hero";
-import ServiciosSection from "@/features/landing/components/ServiciosSection";
 import ComoFuncionaSection from "@/features/landing/components/ComoFuncionaSection";
-import FeaturesSection from "@/features/landing/components/FeaturesSection";
-import PreciosSection from "@/features/landing/components/PreciosSection";
-import FaqSection from "@/features/landing/components/FaqSection";
 import ContactoSection from "@/features/landing/components/ContactoSection";
+import FaqSection from "@/features/landing/components/FaqSection";
+import FeaturesSection from "@/features/landing/components/FeaturesSection";
 import Footer from "@/features/landing/components/Footer";
-import JsonLd from "@/shared/components/core/JsonLd";
+import Hero from "@/features/landing/components/Hero";
+import Navbar from "@/features/landing/components/Navbar";
+import PreciosSection from "@/features/landing/components/PreciosSection";
+import ServiciosSection from "@/features/landing/components/ServiciosSection";
 import { getServicios } from "@/features/services/api/services.service";
+import JsonLd from "@/shared/components/core/JsonLd";
 
 export default function HomePage() {
   const servicios = getServicios();
