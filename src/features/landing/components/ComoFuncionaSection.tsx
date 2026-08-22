@@ -34,7 +34,7 @@ export default function ComoFuncionaSection() {
       <ol role="list" className="relative mt-14 grid gap-10 md:grid-cols-3">
         <div
           aria-hidden="true"
-          className="absolute left-[calc(16.666%+1.5rem)] right-[calc(16.666%+1.5rem)] top-10 hidden h-px bg-linear-to-r from-(--color-border) via-(--color-accent) to-(--color-border) md:block"
+          className="absolute left-[calc(16.666%+1.5rem)] right-[calc(16.666%+1.5rem)] top-10 hidden h-px bg-linear-to-r from-(--color-border) via-(--color-brand-border) to-(--color-border) md:block"
         />
 
         {t.comoFunciona.pasos.map((paso, i) => {

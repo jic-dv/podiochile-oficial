@@ -1,6 +1,7 @@
 import { ImageResponse } from "next/og";
+import { LOGO_ICONO_DATA_URI } from "@/shared/lib/ogLogo";
 
-export const alt = "Podio Chile - Diseño y desarrollo web para empresas en Chile";
+export const alt = "Podio Chile - Páginas y aplicaciones web para empresas";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -32,22 +33,9 @@ export default function OpengraphImage() {
         />
 
         <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-          <div
-            style={{
-              width: 56,
-              height: 56,
-              borderRadius: 14,
-              background: "linear-gradient(135deg, #f5b301 0%, #d99a00 100%)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: 30,
-              fontWeight: 700,
-              color: "#141105",
-            }}
-          >
-            P
-          </div>
+          {/* eslint-disable-next-line @next/next/no-img-element -- next/image
+              no corre dentro de next/og; esta es la forma soportada */}
+          <img src={LOGO_ICONO_DATA_URI} width={56} height={56} alt="" />
           <div style={{ fontSize: 30, fontWeight: 700, color: "#ffffff", letterSpacing: -0.5 }}>
             Podio Chile
           </div>
@@ -67,8 +55,8 @@ export default function OpengraphImage() {
             Tu presencia digital, profesional desde el primer día
           </div>
           <div style={{ fontSize: 28, color: "#b8b2a4", marginTop: 24, maxWidth: 900 }}>
-            Landing pages, sitios multipágina y CRM a medida para profesionales y empresas
-            en Chile.
+            Landing pages, sitios multipágina y aplicaciones web a medida como CRM,
+            para profesionales y empresas.
           </div>
         </div>
 

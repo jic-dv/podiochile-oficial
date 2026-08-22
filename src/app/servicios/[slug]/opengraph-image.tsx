@@ -1,5 +1,6 @@
 import { ImageResponse } from "next/og";
 import { getServicio, getSlugs, getPrecioDesde } from "@/features/services/api/services.service";
+import { LOGO_ICONO_DATA_URI } from "@/shared/lib/ogLogo";
 
 export const alt = "Servicio de Podio Chile";
 export const size = { width: 1200, height: 630 };
@@ -54,22 +55,9 @@ export default async function ServicioOpengraphImage(
         />
 
         <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-          <div
-            style={{
-              width: 46,
-              height: 46,
-              borderRadius: 12,
-              background: "linear-gradient(135deg, #f5b301 0%, #d99a00 100%)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: 25,
-              fontWeight: 700,
-              color: "#141105",
-            }}
-          >
-            P
-          </div>
+          {/* eslint-disable-next-line @next/next/no-img-element -- next/image
+              no corre dentro de next/og; esta es la forma soportada */}
+          <img src={LOGO_ICONO_DATA_URI} width={46} height={46} alt="" />
           <div style={{ fontSize: 25, fontWeight: 600, color: "#b8b2a4" }}>Podio Chile</div>
         </div>
 

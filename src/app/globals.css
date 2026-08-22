@@ -138,6 +138,20 @@ input {
   border-radius: var(--radius-sm);
 }
 
+/* Un contenedor que se enfoca por programa solo para anunciarse (el aviso de
+   cookies mueve el foco ahí al aparecer, para que un lector de pantalla se
+   entere) no debe pintar contorno: nadie llegó ahí con el teclado. En el aviso
+   además se veía como una línea dorada suelta sobre el diálogo, porque su
+   contenedor va de borde a borde y lo único visible del rectángulo era el borde
+   de arriba. Los controles de dentro conservan su contorno.
+
+   Va sin capa a propósito, igual que la regla de arriba: `outline-none` de
+   Tailwind vive en @layer utilities y el CSS sin capa vence a cualquier capa,
+   así que la utilidad en el componente no alcanzaba a ganar. */
+[tabindex="-1"]:focus-visible {
+  outline: none;
+}
+
 /* ─── Revelado por scroll ────────────────────────────────────────────────
    Solo opacidad: el desplazamiento vertical hacía que la página pareciera
    moverse sola al cambiar de vista. Una aparición limpia es más tranquila y

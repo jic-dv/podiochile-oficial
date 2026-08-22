@@ -269,6 +269,89 @@ cualquier capa sin importar la especificidad, así que fuera de ahí anularía l
 utilidades `ease-*` de todo el proyecto. Mismo cuidado con cualquier regla
 global nueva que pise una propiedad que también se use como utilidad.
 
+**El servicio no es solo para Chile.** El copy decía "para ... en Chile" en el
+badge del hero, la descripción, el OG, Twitter, el manifiesto y el JSON-LD; y el
+FAQ del propio home ya admitía lo contrario ("Trabajamos con clientes de todo
+Chile y también del extranjero"). Se quitó la coletilla "en Chile" de esos
+textos y se retiró `areaServed: { "@type": "Country", name: "Chile" }` del
+`Organization` y del `Service` en JSON-LD, porque ese campo sí le dice a Google
+que el área de cobertura es exclusivamente Chile. Las palabras clave (`"diseño
+web Chile"`, etc.) **se dejaron**: apuntan al mercado principal sin excluir al
+resto, que es distinto de declarar una cobertura geográfica cerrada. Tampoco se
+tocó "Diseñado y desarrollado en Chile" del pie ni "Santiago de Chile": esas
+describen dónde está el estudio, no a quién atiende.
+
+**El "logo" de las imágenes Open Graph no era el logo.** `opengraph-image.tsx`
+(home y servicio) dibujaba una letra "P" suelta sobre un cuadrado dorado con
+`next/og`, en vez del rombo apilado real de la marca. Por eso el enlace
+compartido en WhatsApp mostraba un ícono distinto al del resto del sitio: nunca
+fue un problema de caché, era un placeholder que nadie reemplazó por el logo de
+verdad. `next/og` (Satori) no puede leer un archivo del disco al generar la
+imagen — corre sin `fs` — así que la solución no es apuntar a
+`/apple-touch-icon.png`: es incrustar el PNG en base64 dentro del módulo,
+[ogLogo.ts](src/shared/lib/ogLogo.ts), y usarlo como `<img src={data:...}>` en
+las dos rutas.
+
+> Aun con el logo correcto, quien ya compartió el enlace antes de este cambio
+> puede seguir viendo la vista previa vieja: WhatsApp usa el rastreador de Meta,
+> que cachea la miniatura por URL y no la vuelve a pedir en cada envío. Se
+> refresca sola con el tiempo, o al instante pasando la URL por
+> developers.facebook.com/tools/debug y pidiendo "Scrape Again".
+
+**No se venden solo páginas, también aplicaciones web.** El CRM es una
+aplicación, no un sitio, y la metadata decía únicamente "Páginas Web": título,
+descripción, palabras clave, imagen social, manifiesto, JSON-LD y el subtítulo
+del hero hablan ahora de "páginas y aplicaciones web a medida como CRM". Al
+tocar cualquiera de esos textos hay que tocarlos todos: viven en cinco archivos
+distintos (`layout.tsx`, `opengraph-image.tsx`, `page.tsx`, `site.webmanifest` y
+el diccionario) y se desincronizan solos.
+
+> El título por defecto mide 84 caracteres y Google corta cerca de los 60, así
+> que en el resultado de búsqueda se ve truncado. Es una decisión tomada a
+> sabiendas: el título completo se usa igual en la pestaña y en el compartido
+> social. El `twitter.title` sí va corto.
+
+**Las preguntas frecuentes son catálogo, no relleno.** Se escriben a mano y
+viven lejos de los planes, así que son el primer texto que se desactualiza: al
+revisarlas prometían un panel de administración desde el Estándar (es de
+Premium, y es un CRM, no un editor de textos), el píxel de Meta y la etiqueta de
+Google Ads (no existen en ningún plan), un chatbot en el CRM (solo lo tienen los
+servicios web), y que el dominio venía solo desde el Estándar. `check:cotizacion`
+ahora vigila cuatro reglas: los dos idiomas tienen las mismas preguntas, ninguna
+promete una posición en Google **en primera persona** (nombrar "el primer lugar"
+para advertir que nadie lo controla es correcto y debe pasar), el dominio va en
+los tres planes o en ninguno, y una pregunta no puede ofrecer algo —chatbot,
+blog, panel— que ningún plan de ese servicio incluye.
+
+**Dominio y hosting van en los nueve planes.** Compra y configuración de los
+dos por un año, desde el Básico y en los tres servicios, el CRM incluido: no
+son un argumento para subir de plan. El CRM los hereda por "Todo lo del plan
+Básico", que es la convención del catálogo para no repetir la lista entera, así
+que la comprobación entiende esa herencia en vez de exigir la línea literal en
+los tres. Antes el CRM no los traía, por aquello de que un sistema interno no
+lleva dominio propio; la decisión se revirtió.
+
+**Quién administra qué.** El cliente no gestiona su sitio: las actualizaciones
+de textos e imágenes las hace el estudio, y solo **mientras haya soporte
+vigente** (1, 3 o 6 meses según el plan, extensible con mantención). Sin
+soporte vigente, los cambios se cotizan aparte. La única excepción son los
+planes con CRM, donde el cliente sí administra desde un panel, pero **datos de
+negocio** —productos, usuarios, inventario— y no las secciones de la página.
+Esta distinción es la que la FAQ tenía mal: prometía un panel de contenidos
+desde el Estándar.
+
+**El foco por programa no lleva contorno.** El aviso de cookies mueve el foco a
+su contenedor al aparecer, para que un lector de pantalla se entere de que hay
+algo que decidir. Ese contenedor va de borde a borde (`inset-x-0 bottom-0`), así
+que el contorno dorado de `:focus-visible` se dibujaba entero pero solo se veía
+su borde superior: una línea dorada suelta sobre el diálogo. El
+`focus-visible:outline-none` que tenía el componente **no servía**: las
+utilidades de Tailwind viven en `@layer utilities` y la regla `:focus-visible`
+de `globals.css` está sin capa, y el CSS sin capa vence a cualquier capa. La
+regla que sí gana es `[tabindex="-1"]:focus-visible { outline: none }`, también
+sin capa y más específica. Los controles de dentro conservan su contorno: quien
+navega con teclado sigue viendo dónde está.
+
 **La validación del formulario vive en el schema, no en el componente.**
 `crearContactoSchema` recibe los slugs válidos y lo usan los dos lados: React
 Hook Form con `zodResolver` en el cliente, y la Server Action en el servidor.

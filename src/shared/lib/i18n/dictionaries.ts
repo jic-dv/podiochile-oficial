@@ -16,12 +16,12 @@ export const es = {
     menuPrincipal: "Navegación principal",
   },
   hero: {
-    badge: "Servicios web para emprendedores y empresas en Chile",
+    badge: "Páginas y aplicaciones web para emprendedores y empresas",
     titulo1: "Tu presencia digital,",
     tituloDestacado: "profesional",
     titulo2: "desde el primer día",
     subtitulo:
-      "Diseñamos y desarrollamos páginas web, sitios corporativos y sistemas CRM para profesionales y empresas que quieren crecer con presencia y seriedad en internet.",
+      "Diseñamos y desarrollamos páginas web, sitios corporativos y aplicaciones web a medida para profesionales y empresas que quieren crecer con presencia y seriedad en internet.",
     trust: [
       "Sin contratos largos",
       "Entrega garantizada",
@@ -128,22 +128,32 @@ export const es = {
       {
         pregunta: "¿Cuánto tiempo tarda en estar lista mi página web?",
         respuesta:
-          "Depende del servicio y el plan. Una landing page va de 5 a 10 días, un sitio multipágina de 10 a 14 días, y un CRM entre 2 y 8 semanas. El plazo exacto queda por escrito en la cotización, con fecha de entrega.",
-      },
-      {
-        pregunta: "¿Necesito conocimientos técnicos para gestionar mi sitio?",
-        respuesta:
-          "No. Entregamos todos los proyectos con un panel de administración sencillo donde puedes editar textos, imágenes y contenido sin saber programación. Incluimos una capacitación de uso.",
-      },
-      {
-        pregunta: "¿Qué pasa si necesito cambios después de la entrega?",
-        respuesta:
-          "Cada plan incluye revisiones durante el desarrollo. Una vez entregado, puedes contratar el plan de mantención mensual, que cubre cambios menores, actualizaciones de seguridad y soporte técnico.",
+          "Depende del servicio y el plan. Una landing page va de 5 a 10 días, un sitio multipágina de 10 a 14 días, y un CRM entre 2 y 8 semanas. Son días de calendario, no hábiles, y la fecha de entrega queda por escrito en la cotización.",
       },
       {
         pregunta: "¿El precio incluye dominio y hosting?",
         respuesta:
-          "Los planes Estándar y Premium incluyen dominio (.cl o .com) y hosting por un año. El plan Básico incluye el primer mes de hosting. Te asesoramos en la elección y configuramos todo por ti.",
+          "Sí, los dos, en los tres planes de los tres servicios y desde el Básico. Compramos y configuramos el dominio (.cl o .com) y el hosting por un año, y dejamos el certificado SSL y la publicación funcionando. No tienes que contratar nada por separado ni entender de servidores: el proyecto queda en línea y a tu nombre. Antes de que se cumpla el año te avisamos para renovar.",
+      },
+      {
+        pregunta: "¿Necesito conocimientos técnicos para gestionar mi sitio?",
+        respuesta:
+          "No. Las actualizaciones las hacemos nosotros: nos escribes qué cambiar y lo aplicamos, mientras tengas soporte vigente. La excepción son los planes con CRM, donde administras tú desde un panel, pero los datos de tu negocio (productos, usuarios, inventario), no los textos de la página.",
+      },
+      {
+        pregunta: "¿Qué pasa si necesito cambios después de la entrega?",
+        respuesta:
+          "Cada plan incluye revisiones durante el desarrollo y, una vez entregado, un período de soporte garantizado que ya viene pagado con el proyecto: 1 mes en el plan Básico, 3 en el Estándar y 6 en el Premium. No es un cobro aparte ni algo que tengas que contratar después. Dentro de ese período cubrimos cambios menores, actualizaciones de seguridad y soporte. Cuando se termina puedes extenderlo con mantención, por 3, 6 o 12 meses pagados por adelantado o mes a mes.",
+      },
+      {
+        pregunta: "¿Mi página web va a aparecer en Google?",
+        respuesta:
+          "Sí. Dejamos el sitio preparado para que Google lo encuentre y te mostramos la confirmación de que quedó indexado, que suele llegar en días. Lo que no prometemos es una posición determinada: eso depende de tu competencia y de la antigüedad de tu dominio, y no lo controla nadie. Quien te garantice el primer lugar te está vendiendo algo que no puede cumplir.",
+      },
+      {
+        pregunta: "¿El sitio queda a mi nombre?",
+        respuesta:
+          "Sí. Todos los planes incluyen la entrega del código fuente y el dominio se registra a tu nombre. No quedas amarrado a una plataforma que te cobre una mensualidad para mantener tu sitio en línea: si mañana decides seguir con otra persona, se lleva todo lo necesario para continuar.",
       },
       {
         pregunta: "¿Trabajan solo en Santiago o en todo Chile?",
@@ -156,9 +166,9 @@ export const es = {
           "Sí. Ofrecemos pago en 2 cuotas: 50% para iniciar el proyecto y 50% al momento de la entrega. Para proyectos grandes evaluamos un plan en 3 cuotas. Aceptamos transferencia bancaria y tarjeta de crédito.",
       },
       {
-        pregunta: "¿Mi página web va a aparecer en Google?",
+        pregunta: "¿Con quién voy a hablar?",
         respuesta:
-          "Todos nuestros proyectos incluyen optimización SEO desde el inicio: estructura semántica, metadatos, velocidad y datos estructurados. El posicionamiento depende de varios factores, pero entregamos la base técnica correcta.",
+          "Con José Ignacio Contreras Castro, directamente. No hay ejecutivo de cuenta ni mesa de ayuda entre medio: la misma persona que diseña y desarrolla tu proyecto es la que responde tus mensajes y aplica los cambios después de la entrega. Puedes escribir a contacto@podiochile.com, hablar por WhatsApp al +56 9 5173 0743, o dejar tus datos en el formulario de más abajo.",
       },
     ],
   },
@@ -336,7 +346,7 @@ export const es = {
   },
   footer: {
     descripcion:
-      "Diseño y desarrollo web para profesionales y empresas chilenas. Presencia digital profesional desde el primer día.",
+      "Diseño y desarrollo de páginas y aplicaciones web a medida para profesionales y empresas chilenas. Presencia digital profesional desde el primer día.",
     ubicacion: "Santiago de Chile",
     servicios: "Servicios",
     empresa: "Empresa",
@@ -452,12 +462,12 @@ export const en: Dictionary = {
     menuPrincipal: "Main navigation",
   },
   hero: {
-    badge: "Web services for entrepreneurs and companies in Chile",
+    badge: "Websites and web applications for entrepreneurs and companies",
     titulo1: "Your digital presence,",
     tituloDestacado: "professional",
     titulo2: "from day one",
     subtitulo:
-      "We design and build websites, corporate sites and CRM systems for Chilean professionals and companies that want to grow with a serious online presence.",
+      "We design and build websites, corporate sites and custom web applications for Chilean professionals and companies that want to grow with a serious online presence.",
     trust: ["No long contracts", "Guaranteed delivery", "Support in Spanish"],
     ctaPrimario: "View all services",
     ctaSecundario: "Get a free quote",
@@ -560,22 +570,32 @@ export const en: Dictionary = {
       {
         pregunta: "How long does it take to get my website ready?",
         respuesta:
-          "It depends on the service and plan you choose. A basic landing page can be ready in 5 business days. A complete CRM can take between 15 and 35 business days. The exact timeline is confirmed when you hire.",
-      },
-      {
-        pregunta: "Do I need technical knowledge to manage my site?",
-        respuesta:
-          "No. We deliver every project with a simple admin panel where you can edit text, images and content without knowing how to code. Training is included.",
-      },
-      {
-        pregunta: "What if I need changes after delivery?",
-        respuesta:
-          "Every plan includes revisions during development. Once delivered, you can hire the monthly maintenance plan, which covers minor changes, security updates and technical support.",
+          "It depends on the service and the plan. A landing page takes 5 to 10 days, a multipage site 10 to 14 days, and a CRM between 2 and 8 weeks. These are calendar days, not business days, and the delivery date is stated in writing in the quote.",
       },
       {
         pregunta: "Does the price include domain and hosting?",
         respuesta:
-          "The Standard and Premium plans include a domain (.cl or .com) and hosting for one year. The Basic plan includes the first month of hosting. We advise you on the choice and set everything up for you.",
+          "Yes, both, on all three plans of all three services, starting with Basic. We buy and set up the domain (.cl or .com) and the hosting for one year, and we leave the SSL certificate and publishing in working order. You do not have to hire anything separately or understand servers: the project goes live and it is in your name. Before the year is up we let you know so you can renew.",
+      },
+      {
+        pregunta: "Do I need technical knowledge to manage my site?",
+        respuesta:
+          "No. We handle the updates: you tell us what to change and we apply it, while your support is active. The exception is the plans with a CRM, where you administer it yourself from a panel, but your business data (products, users, inventory), not the wording of the page.",
+      },
+      {
+        pregunta: "What if I need changes after delivery?",
+        respuesta:
+          "Every plan includes revisions during development and, once delivered, a guaranteed support period already paid for with the project: 1 month on Basic, 3 on Standard and 6 on Premium. It is not a separate charge or something you have to hire afterwards. Within that period we cover minor changes, security updates and support. When it ends you can extend it with maintenance, for 3, 6 or 12 months paid up front or month by month.",
+      },
+      {
+        pregunta: "Will my website appear on Google?",
+        respuesta:
+          "Yes. We leave the site ready for Google to find it and we show you the confirmation that it was indexed, which usually arrives within days. What we do not promise is a specific position: that depends on your competition and how old your domain is, and nobody controls it. Anyone who guarantees you the top spot is selling something they cannot deliver.",
+      },
+      {
+        pregunta: "Is the site mine?",
+        respuesta:
+          "Yes. Every plan includes handing over the source code, and the domain is registered in your name. You are not tied to a platform charging you a monthly fee to keep your site online: if tomorrow you decide to continue with someone else, they get everything they need to carry on.",
       },
       {
         pregunta: "Do you work only in Santiago or across Chile?",
@@ -588,9 +608,9 @@ export const en: Dictionary = {
           "Yes. We offer payment in 2 installments: 50% to start the project and 50% on delivery. For large projects we can consider 3 installments. We accept bank transfer and credit card.",
       },
       {
-        pregunta: "Will my website appear on Google?",
+        pregunta: "Who will I be talking to?",
         respuesta:
-          "All our projects include SEO optimization from the start: semantic structure, metadata, speed and structured data. Ranking depends on several factors, but we deliver the correct technical foundation.",
+          "With José Ignacio Contreras Castro, directly. There is no account manager or help desk in between: the same person who designs and builds your project is the one who answers your messages and applies the changes after delivery. You can write to contacto@podiochile.com, message WhatsApp at +56 9 5173 0743, or leave your details in the form below.",
       },
     ],
   },
@@ -767,7 +787,7 @@ export const en: Dictionary = {
   },
   footer: {
     descripcion:
-      "Web design and development for Chilean professionals and companies. Professional digital presence from day one.",
+      "Design and development of websites and custom web applications for Chilean professionals and companies. Professional digital presence from day one.",
     ubicacion: "Santiago, Chile",
     servicios: "Services",
     empresa: "Company",

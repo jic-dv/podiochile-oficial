@@ -1,4 +1,6 @@
 import {
+  CORREO,
+  WHATSAPP_DISPLAY,
   construirEnlaceFormulario,
   construirEnlaceWhatsapp,
   construirResumen,
@@ -11,7 +13,7 @@ import {
 import { serviciosMock } from "@/mocks/services";
 import { formatCLP, formatUSD } from "@/shared/lib/formatters";
 import { clpAUsd, usdAClp } from "@/shared/lib/currency/dolar.service";
-import { es } from "@/shared/lib/i18n/dictionaries";
+import { en, es } from "@/shared/lib/i18n/dictionaries";
 
 const landing = serviciosMock.find((s) => s.slug === "landing-page")!;
 const crm = serviciosMock.find((s) => s.slug === "crm-personalizado")!;
@@ -222,6 +224,82 @@ for (const servicio of serviciosMock) {
     servicio.planes[0].precio < servicio.planes[1].precio &&
       servicio.planes[1].precio < servicio.planes[2].precio,
   ]);
+}
+
+// Las preguntas frecuentes no pueden contradecir al catálogo. Se escriben a mano
+// y quedan lejos de los planes, así que son el primer texto que se desactualiza:
+// prometían un panel desde el Estándar, el píxel de Meta y un chatbot en el CRM,
+// nada de lo cual existía en los planes.
+comprobaciones.push([
+  "el home tiene las mismas preguntas en los dos idiomas",
+  es.faq.items.length === en.faq.items.length,
+]);
+// Ojo con el patron: nombrar "el primer lugar" para advertir que nadie lo
+// controla es correcto y hay que dejarlo pasar. Lo que no se puede es
+// prometerlo en primera persona, que es lo unico que esto busca.
+comprobaciones.push([
+  "ninguna pregunta del home promete una posicion en Google",
+  [...es.faq.items, ...en.faq.items].every(
+    (i) =>
+      !/(garantizamos|aseguramos|we guarantee|we ensure)[^.]{0,60}(posici|lugar|ranking|position|Google)/i.test(
+        i.respuesta,
+      ) && !/posicionamiento garantizado|guaranteed ranking/i.test(i.respuesta),
+  ),
+]);
+
+// Los datos de contacto de la FAQ son texto suelto dentro del diccionario, no
+// las constantes: si el correo o el numero cambian, aqui no se enteran solos.
+for (const [idioma, dicc] of [["es", es], ["en", en]] as const) {
+  const contacto = dicc.faq.items.map((i) => i.respuesta).join(" ");
+  comprobaciones.push([
+    `${idioma}: la FAQ da el correo comercial real`,
+    contacto.includes(CORREO),
+  ]);
+  comprobaciones.push([
+    `${idioma}: la FAQ da el WhatsApp comercial real`,
+    contacto.includes(WHATSAPP_DISPLAY),
+  ]);
+}
+
+// El dominio y el hosting van en los tres planes de los tres servicios, desde
+// el Básico: no son un argumento para subir de plan, y la FAQ lo promete.
+//
+// Un plan puede cubrirlos de dos maneras: nombrándolos, o heredándolos con
+// "Todo lo del plan ...", que es la convención del catálogo para no repetir la
+// lista entera. El CRM usa la segunda; los servicios web, la primera.
+const heredaDelAnterior = (p: (typeof serviciosMock)[number]["planes"][number]) =>
+  [...p.bullets.es, ...p.incluye.es].some((x) => /^Todo lo del plan /i.test(x));
+
+for (const servicio of serviciosMock) {
+  let cubierto = false;
+  servicio.planes.forEach((p, i) => {
+    const loNombra = [...p.bullets.es, ...p.incluye.es].some(
+      (x) => /dominio/i.test(x) && /hosting/i.test(x),
+    );
+    cubierto = loNombra || (i > 0 && cubierto && heredaDelAnterior(p));
+    comprobaciones.push([
+      `${servicio.slug}/${p.nivel}: incluye dominio y hosting`,
+      cubierto,
+    ]);
+  });
+}
+
+// Una pregunta no puede nombrar algo que ningún plan de ese servicio incluye
+const VIGILADOS = ["chatbot", "blog", "panel"];
+for (const servicio of serviciosMock) {
+  const catalogo = servicio.planes
+    .flatMap((p) => [...p.bullets.es, ...p.incluye.es])
+    .join(" ")
+    .toLowerCase();
+  for (const termino of VIGILADOS) {
+    const loNombra = servicio.faq.some((f) =>
+      f.respuesta.es.toLowerCase().includes(termino),
+    );
+    comprobaciones.push([
+      `${servicio.slug}: la FAQ no ofrece "${termino}" sin que exista en un plan`,
+      !loNombra || catalogo.includes(termino),
+    ]);
+  }
 }
 
 let ok = 0;

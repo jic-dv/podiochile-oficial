@@ -72,10 +72,10 @@ export default function BannerCookies() {
       aria-describedby="cookies-texto"
       ref={contenedorRef}
       tabIndex={-1}
-      className={cn(
-        "fixed inset-x-0 bottom-0 z-90 p-3 sm:p-4",
-        "focus-visible:outline-none",
-      )}
+      // El contorno de foco lo apaga globals.css con `[tabindex="-1"]:focus-visible`:
+      // `outline-none` vive en @layer utilities y no le gana a la regla
+      // `:focus-visible` sin capa
+      className="fixed inset-x-0 bottom-0 z-90 p-3 sm:p-4"
     >
       <div
         className={cn(

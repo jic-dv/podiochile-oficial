@@ -74,7 +74,6 @@ export default async function ServicioPage({
         description: servicio.descripcion.es,
         url,
         serviceType: servicio.titulo.es,
-        areaServed: { "@type": "Country", name: "Chile" },
         provider: {
           "@type": "Organization",
           name: "Podio Chile",

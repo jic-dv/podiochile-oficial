@@ -370,8 +370,8 @@ const data: Servicio[] = [
           en: "Can I edit the text myself afterwards?",
         },
         respuesta: {
-          es: "Sí. Desde el plan Estándar incluimos un panel simple para editar textos e imágenes sin tocar código. En el plan Básico los cambios los hacemos nosotros durante el período de soporte.",
-          en: "Yes. From the Standard plan we include a simple panel to edit text and images without touching code. On the Basic plan we make the changes for you during the support period.",
+          es: "Los cambios de textos e imágenes los hacemos nosotros durante el período de soporte incluido, en los tres planes: nos escribes y los aplicamos. El panel de administración del plan Premium es otra cosa: sirve para gestionar productos, usuarios e inventario desde una base de datos, no para reescribir las secciones de la página.",
+          en: "We make the text and image changes for you during the included support period, on all three plans: you write to us and we apply them. The Premium plan's admin panel is a different thing: it manages products, users and inventory from a database, not the wording of your page sections.",
         },
       },
       {
@@ -380,8 +380,8 @@ const data: Servicio[] = [
           en: "Does it work for advertising on Google or Instagram?",
         },
         respuesta: {
-          es: "Sí, y es uno de sus usos principales. El plan Premium incluye la instalación del píxel de Meta y la etiqueta de Google Ads para que puedas medir conversiones desde el primer día de campaña.",
-          en: "Yes, and it's one of its main uses. The Premium plan includes installing the Meta pixel and Google Ads tag so you can measure conversions from the first day of your campaign.",
+          es: "Sí, y es uno de sus usos principales: carga rápido, tiene una sola acción clara y el formulario te llega al correo. La dejamos preparada para que conectes las herramientas de medición de tus campañas; si prefieres que las instalemos y configuremos nosotros, dilo al cotizar y lo agregamos.",
+          en: "Yes, and it's one of its main uses: it loads fast, it has a single clear action and the form reaches your inbox. We leave it ready for you to connect your campaign measurement tools; if you would rather we install and configure them, say so when you request the quote and we will add it.",
         },
       },
       {
@@ -415,7 +415,7 @@ const data: Servicio[] = [
             "Posicionamiento en Google (SEO)",
             "Hasta 5 secciones a medida",
             "Adaptable a todo tipo de dispositivos",
-            "Compra y configuración de dominio por 1 año",
+            "Compra y configuración de dominio y hosting por 1 año",
             "Certificado SSL incluido",
             "1 cuenta de correo profesional",
           ],
@@ -423,7 +423,7 @@ const data: Servicio[] = [
             "Positioning for Google (SEO)",
             "Up to 5 custom sections",
             "Works on every type of device",
-            "Domain purchase and setup for 1 year",
+            "Domain and hosting purchase and setup for 1 year",
             "SSL certificate included",
             "1 professional mailbox",
           ],
@@ -482,7 +482,7 @@ const data: Servicio[] = [
             "Posicionamiento SEO en Google con estadísticas de visitas",
             "5 páginas internas",
             "Adaptable a todo tipo de dispositivos, con modo oscuro",
-            "Compra y configuración de dominio por 1 año",
+            "Compra y configuración de dominio y hosting por 1 año",
             "Certificado SSL incluido",
             "Múltiples cuentas de correo profesional",
           ],
@@ -490,7 +490,7 @@ const data: Servicio[] = [
             "SEO positioning work with visit statistics",
             "5 inner pages",
             "Works on every type of device, with dark mode",
-            "Domain purchase and setup for 1 year",
+            "Domain and hosting purchase and setup for 1 year",
             "SSL certificate included",
             "Multiple professional email accounts",
           ],
@@ -564,7 +564,7 @@ const data: Servicio[] = [
           es: [
             "Diseño y desarrollo completo",
             "Certificado SSL incluido",
-            "Compra y configuración de dominio por 1 año",
+            "Compra y configuración de dominio y hosting por 1 año",
             "Sitio en varios idiomas",
             "Chatbot con IA que responde sobre tu contenido",
             "Hasta 25 imágenes creadas para ti",
@@ -575,7 +575,7 @@ const data: Servicio[] = [
           en: [
             "Complete design and development",
             "SSL certificate included",
-            "Domain purchase and setup for 1 year",
+            "Domain and hosting purchase and setup for 1 year",
             "Site in several languages",
             "AI chatbot that answers about your content",
             "Up to 25 images created for you",
@@ -960,8 +960,8 @@ const data: Servicio[] = [
           en: "Can I add new pages later?",
         },
         respuesta: {
-          es: "Sí. El panel permite crear páginas nuevas usando las plantillas ya diseñadas. Si necesitas una página con una estructura totalmente distinta, la desarrollamos como trabajo adicional o dentro del plan de mantención.",
-          en: "Yes. The panel lets you create new pages using the templates already designed. If you need a page with a completely different structure, we build it as additional work or within the maintenance plan.",
+          es: "Sí. Las páginas nuevas las desarrollamos nosotros reutilizando el diseño ya hecho, así que salen bastante más baratas que las del proyecto inicial. Si estás dentro del período de soporte o de mantención, las páginas sencillas entran ahí; una con estructura totalmente distinta se cotiza como trabajo adicional.",
+          en: "Yes. We build the new pages reusing the design already made, so they cost considerably less than those in the original project. If you are within the support or maintenance period, simple pages are covered there; one with a completely different structure is quoted as additional work.",
         },
       },
       {
@@ -970,8 +970,8 @@ const data: Servicio[] = [
           en: "Does the blog really help me show up on Google?",
         },
         respuesta: {
-          es: "Sí, es una de las formas más efectivas, pero requiere constancia: publicar contenido útil de forma regular. Entregamos la base técnica correcta y te orientamos sobre qué temas escribir. Los resultados suelen verse entre el tercer y sexto mes.",
-          en: "Yes, it's one of the most effective ways, but it requires consistency: publishing useful content regularly. We deliver the correct technical foundation and guide you on what topics to write. Results usually appear between the third and sixth month.",
+          es: "Sí, es una de las formas más efectivas, pero requiere constancia: publicar contenido útil de forma regular. El blog viene en el plan Premium. Nosotros dejamos la base técnica correcta y te orientamos sobre qué temas escribir; los resultados suelen verse entre el tercer y el sexto mes, y dependen de cuánto publiques.",
+          en: "Yes, it's one of the most effective ways, but it requires consistency: publishing useful content regularly. The blog comes with the Premium plan. We leave the correct technical foundation and guide you on what topics to write; results usually appear between the third and sixth month, and depend on how much you publish.",
         },
       },
       {
@@ -1005,7 +1005,7 @@ const data: Servicio[] = [
             "Posicionamiento en Google (SEO)",
             "Hasta 5 páginas a medida",
             "Adaptable a todo tipo de dispositivos",
-            "Compra y configuración de dominio por 1 año",
+            "Compra y configuración de dominio y hosting por 1 año",
             "Certificado SSL incluido",
             "1 cuenta de correo profesional",
           ],
@@ -1013,7 +1013,7 @@ const data: Servicio[] = [
             "Positioning for Google (SEO)",
             "Up to 5 custom pages",
             "Works on every type of device",
-            "Domain purchase and setup for 1 year",
+            "Domain and hosting purchase and setup for 1 year",
             "SSL certificate included",
             "1 professional mailbox",
           ],
@@ -1070,7 +1070,7 @@ const data: Servicio[] = [
             "Posicionamiento SEO en Google con estadísticas de visitas",
             "Hasta 10 páginas a medida",
             "Adaptable a todo tipo de dispositivos, con modo oscuro",
-            "Compra y configuración de dominio por 1 año",
+            "Compra y configuración de dominio y hosting por 1 año",
             "Certificado SSL incluido",
             "Múltiples cuentas de correo profesional",
           ],
@@ -1078,7 +1078,7 @@ const data: Servicio[] = [
             "SEO positioning work with visit statistics",
             "Up to 10 custom pages",
             "Works on every type of device, with dark mode",
-            "Domain purchase and setup for 1 year",
+            "Domain and hosting purchase and setup for 1 year",
             "SSL certificate included",
             "Multiple professional email accounts",
           ],
@@ -1154,7 +1154,7 @@ const data: Servicio[] = [
           es: [
             "Diseño y desarrollo completo",
             "Certificado SSL incluido",
-            "Compra y configuración de dominio por 1 año",
+            "Compra y configuración de dominio y hosting por 1 año",
             "Sitio en varios idiomas",
             "Blog propio para publicar cuando quieras",
             "Chatbot con IA que responde sobre tu contenido",
@@ -1166,7 +1166,7 @@ const data: Servicio[] = [
           en: [
             "Complete design and development",
             "SSL certificate included",
-            "Domain purchase and setup for 1 year",
+            "Domain and hosting purchase and setup for 1 year",
             "Site in several languages",
             "Your own blog to publish whenever you want",
             "AI chatbot that answers about your content",
@@ -1541,8 +1541,8 @@ const data: Servicio[] = [
           en: "Can you migrate the data I have in Excel?",
         },
         respuesta: {
-          es: "Sí, la migración está incluida en todos los planes. Revisamos tus planillas, limpiamos duplicados y cargamos la información al sistema antes de la puesta en marcha. En el plan Premium además validamos la calidad de los datos migrados.",
-          en: "Yes, migration is included in every plan. We review your spreadsheets, clean duplicates and load the information into the system before go-live. On the Premium plan we also validate the quality of the migrated data.",
+          es: "Sí. La importación de tus datos viene desde el plan Básico: exportas tus planillas a CSV, revisamos el contenido, limpiamos duplicados y cargamos la información al sistema antes de la puesta en marcha.",
+          en: "Yes. Importing your data is included from the Basic plan: you export your spreadsheets to CSV, we review the content, clean duplicates and load the information into the system before go-live.",
         },
       },
       {
@@ -1557,12 +1557,12 @@ const data: Servicio[] = [
       },
       {
         pregunta: {
-          es: "¿El chatbot con IA responde de forma confiable?",
-          en: "Does the AI chatbot answer reliably?",
+          es: "¿Por qué el precio es un rango y no un valor fijo?",
+          en: "Why is the price a range instead of a fixed amount?",
         },
         respuesta: {
-          es: "El chatbot se entrena con la información de tu negocio y responde consultas frecuentes. Cuando detecta una consulta que no puede resolver, deriva a una persona del equipo con el contexto ya cargado. No inventa respuestas sobre precios ni compromisos.",
-          en: "The chatbot is trained on your business information and answers frequent questions. When it detects a query it can't resolve, it hands over to a team member with the context already loaded. It doesn't invent answers about prices or commitments.",
+          es: "Porque cerrar el precio de un CRM sin conocer tu operación es la forma más rápida de reventar el presupuesto, el tuyo o el nuestro. Por eso partimos con un levantamiento pagado, que se descuenta del valor del proyecto: de ahí sale el alcance por escrito y recién ahí el precio deja de ser un rango. En los servicios web, en cambio, el precio es cerrado desde el principio.",
+          en: "Because pinning down the price of a CRM without knowing your operation is the fastest way to blow the budget, yours or ours. That is why we start with a paid discovery phase, which is deducted from the project price: it produces the scope in writing, and only then does the price stop being a range. On the web services, by contrast, the price is fixed from the start.",
         },
       },
     ],
@@ -1602,6 +1602,7 @@ const data: Servicio[] = [
         incluye: {
           es: [
             "Diseño y desarrollo completo",
+            "Compra y configuración de dominio y hosting por 1 año",
             "Contactos y empresas",
             "Tareas y recordatorios",
             "Notas e historial de cada cliente",
@@ -1612,6 +1613,7 @@ const data: Servicio[] = [
           ],
           en: [
             "Complete design and development",
+            "Domain and hosting purchase and setup for 1 year",
             "Contacts and companies",
             "Tasks and reminders",
             "Notes and history for each client",

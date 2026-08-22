@@ -21,17 +21,20 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITIO),
   title: {
     default:
-      "Podio Chile - Páginas Web Profesionales para Emprendedores y Empresas",
+      "Podio Chile - Páginas y Aplicaciones Web Profesionales para Emprendedores y Empresas",
     template: "%s | Podio Chile",
   },
   description:
-    "Diseño y desarrollo de landing pages, sitios web multipágina y sistemas CRM para profesionales, emprendedores y empresas en Chile. Precios transparentes y entrega garantizada.",
+    "Diseño y desarrollo de landing pages, sitios web multipágina y aplicaciones web a medida como CRM, para profesionales, emprendedores y empresas. Precios transparentes y entrega con fecha.",
   keywords: [
     "diseño web Chile",
     "desarrollo web Chile",
+    "aplicaciones web a medida Chile",
+    "desarrollo de software a medida Chile",
     "landing page Chile",
     "página web empresa Chile",
     "CRM a medida Chile",
+    "sistema de gestión para pymes Chile",
     "páginas web para emprendedores",
   ],
   authors: [{ name: "Podio Chile" }],
@@ -43,16 +46,16 @@ export const metadata: Metadata = {
     url: SITIO,
     siteName: "Podio Chile",
     title:
-      "Podio Chile - Páginas Web Profesionales para Emprendedores y Empresas",
+      "Podio Chile - Páginas y Aplicaciones Web Profesionales para Emprendedores y Empresas",
     description:
-      "Landing pages, sitios web multipágina y CRM a medida para profesionales y empresas en Chile.",
+      "Landing pages, sitios web multipágina y aplicaciones web a medida como CRM, para profesionales y empresas.",
     // La imagen la genera app/opengraph-image.tsx
   },
   twitter: {
     card: "summary_large_image",
-    title: "Podio Chile - Páginas Web Profesionales",
+    title: "Podio Chile - Páginas y Aplicaciones Web Profesionales",
     description:
-      "Landing pages, sitios multipágina y CRM a medida para empresas en Chile.",
+      "Landing pages, sitios multipágina y aplicaciones web a medida como CRM, para empresas.",
   },
   manifest: "/site.webmanifest",
   icons: {

@@ -31,8 +31,7 @@ export default function HomePage() {
         email: "contacto@podiochile.com",
         telephone: "+56951730743",
         description:
-          "Diseño y desarrollo de landing pages, sitios web multipágina y sistemas CRM para profesionales y empresas en Chile.",
-        areaServed: { "@type": "Country", name: "Chile" },
+          "Landing pages, sitios web multipágina y aplicaciones web a medida como CRM, para profesionales y empresas.",
       },
       {
         "@type": "WebSite",
@@ -44,7 +43,7 @@ export default function HomePage() {
       },
       {
         "@type": "ItemList",
-        name: "Servicios de desarrollo web",
+        name: "Servicios de desarrollo de páginas y aplicaciones web",
         itemListElement: servicios.map((servicio, i) => ({
           "@type": "ListItem",
           position: i + 1,
