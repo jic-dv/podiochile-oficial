@@ -34,6 +34,14 @@ const RESPALDO: Dolar = { valor: 923, fecha: "2026-08-21", respaldo: true };
 const REVALIDAR_SEGUNDOS = 60 * 60 * 6;
 
 /**
+ * `fetch` de Node no trae tiempo límite. Sin esto, una API de terceros que
+ * acepta la conexión y no responde deja `next build` colgado sin error y sin
+ * fin: el despliegue nunca termina. Cinco segundos es de sobra para un JSON
+ * pequeño, y si se agota se usa el respaldo.
+ */
+const TIEMPO_LIMITE_MS = 5000;
+
+/**
  * Solo servidor. Se llama desde el layout raíz y el valor viaja al cliente como
  * prop, así ninguna visita golpea la API de terceros desde el navegador: se
  * consulta una vez cada seis horas para todo el tráfico.
@@ -43,6 +51,7 @@ export async function getDolar(): Promise<Dolar> {
     const respuesta = await fetch("https://findic.cl/api/", {
       next: { revalidate: REVALIDAR_SEGUNDOS },
       headers: { accept: "application/json" },
+      signal: AbortSignal.timeout(TIEMPO_LIMITE_MS),
     });
 
     if (!respuesta.ok) return RESPALDO;

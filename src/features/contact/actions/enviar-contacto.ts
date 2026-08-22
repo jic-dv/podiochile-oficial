@@ -27,20 +27,23 @@ export async function enviarContacto(datos: unknown): Promise<ResultadoEnvio> {
     return { ok: false, errores };
   }
 
-  const { nombre, email, pais, telefono, servicio, mensaje } = resultado.data;
-  const telefonoInternacional = componerTelefono(pais, telefono);
+  const { pais, telefono, servicio, mensaje } = resultado.data;
+  // Se compone aquí porque es lo que necesitará el envío real; no se registra
+  void componerTelefono(pais, telefono);
 
   try {
     // TODO: aquí va el envío real (correo transaccional o alta en el CRM).
     // Los datos ya vienen validados y normalizados. Si se persisten en una
     // base, la consulta debe ir parametrizada: el filtrado de texto de arriba
     // no es lo que previene una inyección SQL.
+    // Sin datos personales en el log. Los registros del servidor los guarda el
+    // proveedor de alojamiento, se retienen fuera de nuestro control y la
+    // política de privacidad promete lo contrario: solo se anota que hubo una
+    // solicitud y por cuál servicio, que es lo único que sirve para operar.
     console.info("[contacto] solicitud validada", {
-      nombre,
-      email,
-      telefono: telefonoInternacional,
       servicio,
-      largoMensaje: mensaje?.length ?? 0,
+      pais,
+      conMensaje: (mensaje?.length ?? 0) > 0,
     });
 
     return { ok: true };

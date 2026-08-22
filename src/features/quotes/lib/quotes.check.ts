@@ -205,6 +205,19 @@ for (const servicio of serviciosMock) {
     servicio.planes.find((p) => p.destacado)?.nivel === "estandar",
   ]);
   comprobaciones.push([
+    `${servicio.slug}: el plazo de entrega sube de plan en plan`,
+    servicio.planes[0].entregaDias < servicio.planes[1].entregaDias &&
+      servicio.planes[1].entregaDias < servicio.planes[2].entregaDias,
+  ]);
+  comprobaciones.push([
+    `${servicio.slug}: el plazo se redacta como "Entrega en ..."`,
+    servicio.planes.every((p) => p.entrega.es.startsWith("Entrega en ")),
+  ]);
+  comprobaciones.push([
+    `${servicio.slug}: el plazo no habla de días hábiles`,
+    servicio.planes.every((p) => !/hábiles|business days/i.test(p.entrega.es + p.entrega.en)),
+  ]);
+  comprobaciones.push([
     `${servicio.slug}: los precios suben de plan en plan`,
     servicio.planes[0].precio < servicio.planes[1].precio &&
       servicio.planes[1].precio < servicio.planes[2].precio,

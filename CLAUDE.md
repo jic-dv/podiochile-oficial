@@ -43,7 +43,7 @@ npm run start     # servidor de producción
 npm run lint      # eslint
 npm run check:contacto  # 34 casos del schema de contacto (tsx, sin framework)
 npm run check:mailto    # 15 comprobaciones del correo que se abre al enviar
-npm run check:cotizacion # 60 comprobaciones del resumen, la moneda y el catálogo
+npm run check:cotizacion # 69 comprobaciones del resumen, la moneda y el catálogo
 ```
 
 ## Stack
@@ -187,6 +187,24 @@ páginas según corresponda. Lo único propio del multipágina es el blog.
 hago yo") y las **conexiones externas** (pagos, reservas, correos automáticos)
 solo en los tres Premium: es lo que separa un sitio que se ve bien de uno que
 además opera.
+
+### Plazos de entrega
+
+| Servicio | Básico | Estándar | Premium |
+| -------- | ------ | -------- | ------- |
+| Landing Page | 5 días | 7 días | 10 días |
+| Multipágina | 10 días | 12 días | 14 días |
+| CRM | 2 semanas | 4 a 5 semanas | 6 a 8 semanas |
+
+Se dice **"Entrega en N días"**, nunca "N días hábiles": el cliente cuenta en
+días de calendario y "hábiles" solo sirve para discutir después. El CRM se
+cuenta en semanas porque en meses de trabajo el día suelto no informa.
+
+`entregaDias` guarda el número para ordenar y comparar; el texto visible sale
+siempre de `entrega`, que ya viene redactado. Por eso la tarjeta del home
+muestra "Entrega en 2 semanas" en el CRM y no un "14 días" compuesto a mano.
+`check:cotizacion` vigila las tres reglas: que el plazo suba de plan en plan,
+que empiece por "Entrega en", y que no reaparezca la palabra "hábiles".
 
 ### Mantención
 
@@ -631,12 +649,48 @@ se sirven con `unoptimized`. Pasarlas por `/_next/image` obliga a habilitar
 impide que el navegador las pinte dentro de un `<img>`. Un vector no gana nada en
 el optimizador: no hay redimensionado ni cambio de formato que ganar.
 
+## Producción
+
+**Cabeceras de seguridad en `next.config.ts`.** No había ninguna. Ahora van CSP,
+`X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`,
+`Permissions-Policy` y HSTS, más `poweredByHeader: false` para no anunciar el
+framework y su versión.
+
+La CSP lleva `'unsafe-inline'` en `script-src` a la fuerza: el script que
+restituye el tema antes del primer paint es inline por necesidad. Firmarlo con
+nonce obliga a renderizar cada página en cada visita y este sitio es estático.
+Aun así la política bloquea scripts, marcos, fuentes y objetos de terceros.
+`'unsafe-eval'` se agrega **solo en desarrollo**, donde React lo necesita: sin
+esa distinción `npm run dev` queda inservible.
+
+**Ninguna llamada a un tercero sin tiempo límite.** `fetch` de Node no lo trae.
+Sin `AbortSignal.timeout`, una API que acepta la conexión y no responde deja
+`next build` colgado sin error y sin fin, y el despliegue nunca termina.
+
+**En el log del servidor no van datos personales.** La Server Action registraba
+nombre, correo y teléfono. Esos registros los guarda el proveedor de
+alojamiento, se retienen fuera de nuestro control y la política de privacidad
+promete lo contrario. Ahora solo se anota el servicio, el país y si venía
+mensaje.
+
+**El presupuesto de JS no se cumple.** Medido sobre el build de producción y
+comprimido: **317 KB en el home y 329 KB en el detalle**, contra los 120/150 KB
+del Bloque 0. Los dos trozos más grandes son el runtime de React y Next (69 KB)
+y **Zod (63 KB)**, que entra al cliente por `FormularioContacto`, el único que
+importa `crearContactoSchema` como valor y no como tipo. El resto de los
+`import type` de schemas se borran al compilar y no pesan. Bajarlo de verdad
+pasa por validar en el cliente sin Zod y dejarlo solo en la Server Action, o
+por cargar el formulario y el lightbox de forma diferida.
+
 ## Pendientes antes de producción
 
 - [ ] Conectar el envío real en `enviar-contacto.ts`: hoy valida y registra, y el
       envío final lo hace el cliente de correo del visitante vía `mailto:`. Un
       correo transaccional propio quitaría esa dependencia del dispositivo
 - [ ] Rate limiting por IP en la Server Action antes de exponerla en producción
+- [ ] Bajar el JS del cliente: hoy 317 KB contra un presupuesto de 120 KB
+- [ ] Confirmar que el dominio desplegado es `www.podiochile.com`: el canonical,
+      el sitemap y el robots lo dan por hecho
 - [ ] **Hacer revisar por abogado** los textos de `/privacidad`, `/terminos` y `/cookies`
 - [ ] Confirmar RUT y domicilio exacto: el responsable ya está identificado como
       José Ignacio Contreras Castro, persona natural
@@ -658,7 +712,6 @@ el optimizador: no hay redimensionado ni cambio de formato que ganar.
       precios deben mostrarse "+ IVA"
 - [ ] Cuenta Vercel Pro activa antes del primer cliente: publicar sitios
       comerciales en Hobby incumple la licencia
-- [ ] Cabeceras de seguridad y CSP en `next.config.ts`
 - [ ] Al sumar analítica: agregar su categoría al aviso, subir `VERSION_CONSENTIMIENTO`
       y no cargar el script hasta que esa categoría esté aceptada
 - [ ] Tests: Vitest para `cotizacion.ts` y schemas; Playwright para el flujo de cotización

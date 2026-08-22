@@ -356,7 +356,7 @@ export default function ServicioDetalle({ servicio, otros }: Props) {
               />
               <span className="flex items-center gap-1 text-xs font-normal text-[var(--color-text-muted)]">
                 <IconReloj className="h-3 w-3" aria-hidden="true" />
-                {planActivo.entregaDias}
+                {planActivo.entrega[locale]}
                 <IconRevisiones className="ml-1 h-3 w-3" aria-hidden="true" />
                 {planActivo.revisiones}
               </span>

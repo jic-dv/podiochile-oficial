@@ -21,7 +21,11 @@ export default function ServicioCard({ servicio }: { servicio: Servicio }) {
   const { locale, t } = useI18n();
   const Icono = ICONOS[servicio.icono];
   const desde = getPrecioDesde(servicio);
-  const entregaMin = Math.min(...servicio.planes.map((p) => p.entregaDias));
+  // El plazo del plan más rápido, con su propio texto: el CRM se cuenta en
+  // semanas y componer "N días" aquí lo contradiría
+  const planMasRapido = servicio.planes.reduce((a, b) =>
+    b.entregaDias < a.entregaDias ? b : a,
+  );
 
   return (
     <Link
@@ -73,7 +77,7 @@ export default function ServicioCard({ servicio }: { servicio: Servicio }) {
           </div>
           <p className="flex items-center gap-1.5 pb-1 text-xs text-[var(--color-text-muted)]">
             <IconReloj className="h-3.5 w-3.5" aria-hidden="true" />
-            {entregaMin} {locale === "es" ? "días" : "days"}
+            {planMasRapido.entrega[locale]}
           </p>
         </div>
 

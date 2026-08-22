@@ -128,7 +128,7 @@ export const es = {
       {
         pregunta: "¿Cuánto tiempo tarda en estar lista mi página web?",
         respuesta:
-          "Depende del servicio y el plan que elijas. Una landing page básica puede estar lista en 5 días hábiles. Un CRM completo puede tomar entre 15 y 35 días hábiles. El plazo exacto se confirma al contratar.",
+          "Depende del servicio y el plan. Una landing page va de 5 a 10 días, un sitio multipágina de 10 a 14 días, y un CRM entre 2 y 8 semanas. El plazo exacto queda por escrito en la cotización, con fecha de entrega.",
       },
       {
         pregunta: "¿Necesito conocimientos técnicos para gestionar mi sitio?",
