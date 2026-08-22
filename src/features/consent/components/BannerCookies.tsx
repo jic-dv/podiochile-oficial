@@ -183,7 +183,7 @@ export default function BannerCookies() {
         <div className="mt-4 flex flex-col gap-2.5 sm:flex-row">
           <Button
             size="md"
-            className="flex-1"
+            className="flex-1 py-1.5"
             onClick={() => decidir("aceptado")}
           >
             {t.cookies.aceptar}
@@ -191,7 +191,7 @@ export default function BannerCookies() {
           <Button
             variant="outline"
             size="md"
-            className="flex-1"
+            className="flex-1 py-1.5"
             onClick={() => decidir("rechazado")}
           >
             {t.cookies.rechazar}
